@@ -32,7 +32,7 @@ const clientHandler = () => ({
           return {
             causeDetailName: transaction.causeDetailName,
             transactionDate: transaction.transactionDate,
-            transactionValue: transaction.trasactionValue,
+            transactionValue: transaction.transactionValue,
             causeOrg: cause[0].orgName,
             causeName: cause[0].causeName,
             causeDesc: cause[0].causeDesc
