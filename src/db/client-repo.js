@@ -23,6 +23,28 @@ const clientRepo = () => ({
   },
   getSubCauses: (causeId) => {
     return db('cf-causedetails').where('cf-causedetails.causeId', causeId).then();
+  },
+  addDonationToSubCause: (requestParams) => {
+    let transactionobj = {
+      userId: requestParams.userId,
+      transactionValue: requestParams.transactionAmt,
+      subCauseId: requestParams.subCauseId
+    };
+    return db('cf-transaction').insert(transactionobj, 'id').then();
+  },
+  deductUserBalance: (requestParams) => {
+    return db('cf-user').where('id', requestParams.userId).then((result) => {
+      if (result[0]) {
+        let updatedBalance = Number(result[0].balance) - Number(requestParams.transactionAmt);
+        let userObj = {
+          balance: updatedBalance
+        };
+
+        return db('cf-user').where('id', requestParams.userId).update(userObj).then((result) => {
+          return result;
+        });
+      }
+    });
   }
 });
 

@@ -63,7 +63,26 @@ const clientHandler = () => ({
       });
     } catch (ex) {
       request.log('usererror', ex);
-      reply(boom.badImplementation('Unable to find any .'));
+      reply(boom.badImplementation('Unable to find any orgs, causes etc.'));
+    }
+  },
+  addDonationToSubCause: (request, reply) => {
+    try {
+      const requestParams = {
+        subCauseId: request.payload.subCauseId,
+        userId: request.payload.userId,
+        causeId: request.payload.causeId,
+        orgId : request.payload.orgId,
+        transactionAmt: request.payload.transactionAmt
+      };
+      clientRepoInst.addDonationToSubCause(requestParams).then((addedId) => {
+        clientRepoInst.deductUserBalance(requestParams).then((result) => {
+          reply(addedId).code(201);
+        });
+      });
+    } catch (ex) {
+      request.log('usererror', ex);
+      reply(boom.badImplementation('Unable to create transaction .'));
     }
   }
 });

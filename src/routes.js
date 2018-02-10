@@ -29,6 +29,11 @@ const Routes = [
     path: '/api/getDonationScreenData',
     method: 'GET',
     handler: clientHandlerInstance.getDonationScreenData
+  },
+  {
+    path: '/api/addDonationToSubCause',
+    method: 'POST',
+    handler: clientHandlerInstance.addDonationToSubCause
   }
 ];
 
