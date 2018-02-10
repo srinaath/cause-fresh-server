@@ -1,0 +1,14 @@
+{
+  "name": "cause-fresh",
+  "version": "1.0.0",
+  "description": "Accountability to donations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "sravichandran",
+  "license": "ISC"
+}
