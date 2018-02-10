@@ -7,6 +7,14 @@ import adminRepo from '../../db/admin-repo';
 const adminRepoInst = adminRepo();
 
 const adminHandler = (request, reply) => ({
+  addTransaction: (request, reply) => {
+    try {
+
+    } catch (ex) {
+      request.log('usererror', ex);
+      reply(boom.badImplementation('Unable to add transactions.'));
+    }
+  }
 });
 
 export default adminHandler;

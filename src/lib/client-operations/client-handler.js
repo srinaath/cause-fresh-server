@@ -47,6 +47,24 @@ const clientHandler = () => ({
       request.log('usererror', ex);
       reply(boom.badImplementation('Unable to find any .'));
     }
+  },
+  getDonationScreenData: (request, reply) => {
+    try {
+      let promiseArr = [];
+      promiseArr.push(clientRepoInst.getOrgs());
+      promiseArr.push(clientRepoInst.getCauses(1));
+      promiseArr.push(clientRepoInst.getSubCauses(1));
+
+      Promise.all(promiseArr).then((donationData) => {
+        let orgs = donationData[0];
+        let causes = donationData[1];
+        let subCauses = donationData[2];
+        reply({orgs, causes, subCauses}).code(200);
+      });
+    } catch (ex) {
+      request.log('usererror', ex);
+      reply(boom.badImplementation('Unable to find any .'));
+    }
   }
 });
 

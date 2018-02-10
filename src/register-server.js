@@ -19,48 +19,6 @@ const registerServerHandlers = () => {
 
   const initServer = () => {
     try {
-      const options = {
-        ops: {
-          interval: 1000
-        },
-        reporters: {
-          myConsoleReporter: [{
-            module: 'good-squeeze',
-            name: 'Squeeze',
-            args: [{
-              log: '*',
-              events: { log: 'error' },
-              response: '*'
-            }]
-          }, {
-            module: 'good-console'
-          }, 'stdout'],
-          myFileReporter: [{
-            module: 'good-squeeze',
-            name: 'Squeeze',
-            args: [{
-              response: '*',
-              log: '*'
-            }]
-          }, {
-            module: 'good-squeeze',
-            name: 'SafeJson'
-          }, {
-            module: 'good-file',
-            args: [process.env.logFilePath]
-          }]
-        }
-      };
-
-      serverObj.register({
-        register: require( 'good'),
-        options
-      }, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
-
       serverObj.register({
         register: require('hapi-cors'),
         options: {

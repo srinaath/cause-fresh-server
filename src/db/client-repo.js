@@ -14,6 +14,15 @@ const clientRepo = () => ({
     return db('cf-cause').where('cf-cause.id', causeId)
     .join('cf-organization', 'cf-organization.id', '=', 'cf-cause.organizationId')
     .then();
+  },
+  getOrgs: () => {
+    return db('cf-organization').where('cf-organization.id', 1).then();
+  },
+  getCauses: (causeId) => {
+    return db('cf-cause').where('cf-cause.id', causeId).then();
+  },
+  getSubCauses: (causeId) => {
+    return db('cf-causedetails').where('cf-causedetails.causeId', causeId).then();
   }
 });
 
