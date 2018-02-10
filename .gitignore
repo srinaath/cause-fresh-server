@@ -1,3 +1,4 @@
 node_modules
 accessKeys.csv
 cause-fresh.pem
+./env-config
