@@ -21,9 +21,9 @@ const Routes = [
     }
   },
   {
-    path: '/api/getUserDetails',
+    path: '/api/getTransactionDetails',
     method: 'GET',
-    handler: clientHandlerInstance.getUserDetails
+    handler: clientHandlerInstance.getTransactionDetails
   }
 ];
 
