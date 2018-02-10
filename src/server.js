@@ -3,7 +3,6 @@ import Hapi from 'hapi';
 import inert from 'inert';
 import path from 'path';
 import registerServerHandler from './register-server';
-
 const registerHandler = registerServerHandler();
 
 
@@ -50,5 +49,5 @@ server.ext('onPostHandler', (request, reply) => {
 server.route(require('./routes'));
 
 server.start( () => {
-  console.log('Starting server for cause watch');
+  console.log(`Starting server for cause watch ${process.env.SERVER_PORT}`);
 });
