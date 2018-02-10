@@ -1,3 +1,9 @@
+import clientHandler from './lib/client-operations/client-handler';
+import adminHandler from './lib/admin-operations/admin-handler';
+
+const clientHandlerInstance = clientHandler();
+const adminHandlerInstance = adminHandler();
+
 const Routes = [
   // All resources routes
   {
@@ -13,6 +19,11 @@ const Routes = [
         index: true
       }
     }
+  },
+  {
+    path: '/api/getUserDetails',
+    method: 'GET',
+    handler: clientHandlerInstance.getUserDetails
   }
 ];
 
