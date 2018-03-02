@@ -35,17 +35,17 @@ const clientHandler = () => ({
             transactionValue: transaction.transactionValue,
             causeOrg: cause[0].orgName,
             causeName: cause[0].causeName,
-            causeDesc: cause[0].causeDesc
+            causeDesc: cause[0].causeDesc,
+            nodeEnv: process.env.NODE_ENV
           };
         });
 
         transactionObj.transactHistory = historyObj;
         reply(transactionObj).code(200);
       });
-
     } catch (ex) {
       request.log('usererror', ex);
-      reply(boom.badImplementation('Unable to find any .'));
+      reply(boom.badImplementation('Unable to find any transactions for the user.'));
     }
   },
   getDonationScreenData: (request, reply) => {
@@ -68,12 +68,17 @@ const clientHandler = () => ({
   },
   addDonationToSubCause: (request, reply) => {
     try {
+      let payload = request.payload;
+      if (typeof request.payload === 'string') {
+        payload = JSON.parse(request.payload);
+      }
+
       const requestParams = {
-        subCauseId: request.payload.subCauseId,
-        userId: request.payload.userId,
-        causeId: request.payload.causeId,
-        orgId : request.payload.orgId,
-        transactionAmt: request.payload.transactionAmt
+        subCauseId: payload.subCauseId,
+        userId: payload.userId,
+        causeId: payload.causeId,
+        orgId : payload.orgId,
+        transactionAmt: payload.transactionAmt
       };
       clientRepoInst.addDonationToSubCause(requestParams).then((addedId) => {
         clientRepoInst.deductUserBalance(requestParams).then((result) => {

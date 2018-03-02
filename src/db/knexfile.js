@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host: '18.217.221.74',
+      host: process.env.dbHost,
       user: process.env.dbUser,
       database: process.env.dbName,
       password: process.env.dbPass
@@ -12,7 +12,7 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host: 'localhost',
+      host: process.env.dbHost,
       user: process.env.dbUser,
       database: process.env.dbName,
       password: process.env.dbPass

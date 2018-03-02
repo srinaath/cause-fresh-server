@@ -46,8 +46,6 @@ server.ext('onPostHandler', (request, reply) => {
   return reply.continue();
 });
 
-server.route(require('./routes'));
-
 server.start( () => {
   console.log(`Starting server for cause watch ${process.env.SERVER_PORT}`);
 });
