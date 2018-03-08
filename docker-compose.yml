@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  express-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - causefresh_net
+
+  causefresh-db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: terminator007
+    networks:
+        causefresh_net:
+            aliases:
+                - causefresh-db
+    ports:
+      - "3306:3306"
+
+networks:
+    causefresh_net:
+      driver: bridge
+
