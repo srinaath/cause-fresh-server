@@ -3,8 +3,10 @@ import boom from 'boom';
 import lodash from 'lodash';
 import validation from './validation';
 import adminRepo from '../../db/admin-repo';
+import {getDbInstance} from '../../db/db';
 
-const adminRepoInst = adminRepo();
+const db = getDbInstance();
+const adminRepoInst = adminRepo(db);
 
 const adminHandler = (request, reply) => ({
   addTransaction: (request, reply) => {

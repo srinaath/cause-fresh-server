@@ -1,9 +1,10 @@
-const express = require('express');
-const registerServer = require('./register-server');
-const chalk = require('chalk');
+import express from 'express';
+import registerServer from './register-server';
+import chalk from 'chalk';
+import registerServerHandlers from './register-server';
 
 const app = express();
-const serverUtils = registerServer(app);
+const serverUtils = registerServerHandlers(app);
 
 serverUtils.setEnvVariables(process.env.NODE_ENV);
 

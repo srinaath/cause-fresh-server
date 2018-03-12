@@ -1,17 +1,17 @@
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
-const logger = require('morgan');
-const errorHandler = require('errorhandler');
-const passport = require('passport');
-const expressValidator = require('express-validator');
-const compression = require('compression');
-const expressStatusMonitor = require('express-status-monitor');
-const fs = require('fs');
-const path = require('path');
-const rfs = require('rotating-file-stream');
-const express = require('express');
-const lusca = require('lusca');
-const loadRoutes = require('./express-routes');
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import errorHandler from 'errorhandler';
+import passport from 'passport';
+import expressValidator from 'express-validator';
+import compression from 'compression';
+import expressStatusMonitor from 'express-status-monitor';
+import fs from 'fs';
+import path from 'path';
+import rfs from 'rotating-file-stream';
+import express from 'express';
+import lusca from 'lusca';
+import boom from 'express-boom';
 // const passportConfiguration = require('./config/passport');
 
 
@@ -38,12 +38,14 @@ const registerServerHandlers = (serverInstance) => {
     serverInstance.use(expressValidator());
     serverInstance.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
     serverInstance.use(lusca.xframe('SAMEORIGIN'));
+    serverInstance.use(boom());
     serverInstance.use(lusca.xssProtection(true));
-
+    setLogger();
     // Use passport for OAuth
     setPassport();
 
     // Load Routes
+    const loadRoutes = require('./express-routes');
     loadRoutes(serverInstance);
   };
 
@@ -79,4 +81,4 @@ const registerServerHandlers = (serverInstance) => {
   };
 };
 
-module.exports = registerServerHandlers;
+export default registerServerHandlers;

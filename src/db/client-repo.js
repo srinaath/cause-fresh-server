@@ -1,7 +1,4 @@
-import db from './db';
-
-
-const clientRepo = () => ({
+const clientRepo = (db) => ({
   getUserDetails: (userId) => {
     return db('cf-user').where('id', userId).then();
   },

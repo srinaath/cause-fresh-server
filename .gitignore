@@ -6,3 +6,5 @@ cause-fresh.pem
 /sravichandranMysql.spf
 /MostImportantConnection.spf
 /public
+./logs
+/src/logs
