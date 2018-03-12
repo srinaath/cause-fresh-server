@@ -1,4 +1,4 @@
-import db from './db';
+const db = require('./db');
 
 
 const adminRepo = (userId) => ({
@@ -12,4 +12,4 @@ const adminRepo = (userId) => ({
   }
 });
 
-export default adminRepo;
+module.exports = adminRepo;

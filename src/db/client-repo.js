@@ -48,4 +48,4 @@ const clientRepo = () => ({
   }
 });
 
-export default clientRepo;
+module.exports = clientRepo;

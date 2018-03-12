@@ -1,51 +1,15 @@
-global.__basePath = __dirname + '/src/';
-import Hapi from 'hapi';
-import inert from 'inert';
-import path from 'path';
-import registerServerHandler from './register-server';
-const registerHandler = registerServerHandler();
+const express = require('express');
+const registerServer = require('./register-server');
+const chalk = require('chalk');
 
+const app = express();
+const serverUtils = registerServer(app);
 
-registerHandler.setEnvVariables(process.env.NODE_ENV);
+serverUtils.setEnvVariables(process.env.NODE_ENV);
 
-const server = new Hapi.Server({
-  connections: {
-    routes: {
-      files: {
-        relativeTo: path.join(__dirname, '/public')
-      }
-    }
-  }
-});
+serverUtils.initExpressUtilities();
 
-server.register(inert, (err) => {
-  if (err) {
-    throw err;
-  }
-});
-server.connection({
-  port: process.env.SERVER_PORT,
-  routes: { log: true }
-});
-
-registerHandler.setServerObj(server);
-registerHandler.initServer();
-
-server.ext('onPreResponse',  (request, reply) => {
-  if (request.getLog('appError').length > 0) {
-    server.log(['error'], JSON.stringify(request.getLog('appError')[0].data));
-  }
-  reply.continue();
-});
-
-server.ext('onPostHandler', (request, reply) => {
-  const response = request.response;
-  if (response.output && response.output.statusCode === 404) {
-    return reply.file(__dirname + '/public/index.html');
-  }
-  return reply.continue();
-});
-
-server.start( () => {
-  console.log(`Starting server for cause watch ${process.env.SERVER_PORT}`);
+app.listen(app.get('port'), () => {
+  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('  Press CTRL-C to stop\n');
 });

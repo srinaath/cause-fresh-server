@@ -1,8 +1,7 @@
-import joi from 'joi';
-import boom from 'boom';
-import lodash from 'lodash';
-import validation from './validation';
-import clientRepo from '../../db/client-repo';
+const boom = require('express-boom');
+const lodash = require('lodash');
+const validation = require('./validation');
+const clientRepo = require('../../db/client-repo');
 
 const clientRepoInst = clientRepo();
 
@@ -41,7 +40,12 @@ const clientHandler = () => ({
         });
 
         transactionObj.transactHistory = historyObj;
-        reply(transactionObj).code(200);
+        reply.status(200).send(transactionObj);
+      })
+      .catch((err) => {
+        reply.status(500).send(err);
+        // request.log('usererror', err);
+        // reply(boom.badImplementation('Unable to find any transactions for the user.'));
       });
     } catch (ex) {
       request.log('usererror', ex);
