@@ -8,3 +8,4 @@ cause-fresh.pem
 /public
 ./logs
 /src/logs
+/latestCauseFresh.pem
