@@ -10,8 +10,8 @@
     "lint:watch": "esw server",
     "open:dev": "NODE_ENV=dev nodemon src/server.js --exec babel-node",
     "start": "npm-run-all --parallel lint:watch open:dev",
-    "build:prod": "NODE_ENV=production node src/server.js",
-    "build:qa": "NODE_ENV=qa node src/server.js",
+    "build:prod": "NODE_ENV=production nodemon src/server.js",
+    "build:qa": "NODE_ENV=qa nodemon src/server.js --exec babel-node",
     "deploy-script": "node ./bin/www"
   },
   "keywords": [

@@ -4,12 +4,8 @@ LABEL maintainer = Srinaath Ravichandran
 
 EXPOSE 4000
 
-ENV NODE_ENV = production
+ENV JENKINS_HOME /var/jenkins_home
 
-COPY ./ /var/www
-
-WORKDIR /var/www
-
-RUN npm install
-
-ENTRYPOINT [ "npm", "start" ]
+VOLUME jenkins-data /var/jenkins_home
+VOLUME /var/run/docker.sock /var/run/docker.sock
+VOLUME "$HOME" /home
