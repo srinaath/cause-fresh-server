@@ -9,6 +9,11 @@ services:
       - "${SERVER_PORT}:${SERVER_PORT}"
     networks:
       - causefresh_net_qa
+    entrypoint:
+      - npm
+      - run
+      - build:qa
+
 
   causefresh-db-qa:
     build:
