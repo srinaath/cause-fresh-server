@@ -6,7 +6,7 @@ services:
       context: ../../
       dockerfile: ./Docker/Dockerfile-node
     ports:
-      - "3000:3000"
+      - "${SERVER_PORT}:${SERVER_PORT}"
     networks:
       - causefresh_net_qa
 
@@ -15,12 +15,14 @@ services:
       context: ../../
       dockerfile: ./Docker/Dockerfile-mysql
     restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${dbPass}
     networks:
       causefresh_net_qa:
             aliases:
               - ${dbHost}
     ports:
-      - "3306:3306"
+      - "${DB_PORT_EXTERNAL}:${DB_PORT_INTERNAL}"
 
 networks:
     causefresh_net_qa:
