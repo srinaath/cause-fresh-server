@@ -7,3 +7,5 @@ COPY ./ /var/www
 WORKDIR /var/www
 
 RUN npm install
+
+ENTRYPOINT [ "npm", "run", "build:qa" ]
