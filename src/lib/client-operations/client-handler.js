@@ -7,45 +7,53 @@ const db = getDbInstance();
 const clientRepoInst = clientRepo(db);
 
 const clientHandler = () => ({
+  testClientEndpoint: (request, reply) =>{
+    reply.status(200).send({
+      test: 'Success'
+    });
+  },
   getTransactionDetails: async(request, reply) => {
-    try {
-      const userId = Number(request.query.userId);
-      let promiseArr = [];
-      promiseArr.push(clientRepoInst.getUserDetails(userId));
-      promiseArr.push(clientRepoInst.getTransactionHistory(userId));
-      promiseArr.push(clientRepoInst.getCause(1));
-      const values = await Promise.all(promiseArr);
-      let userDetails = values[0][0];
-      let transactionHistory = values[1];
-      let cause = values[2];
+    // try {
+    //   const userId = Number(request.query.userId);
+    //   let promiseArr = [];
+    //   promiseArr.push(clientRepoInst.getUserDetails(userId));
+    //   promiseArr.push(clientRepoInst.getTransactionHistory(userId));
+    //   promiseArr.push(clientRepoInst.getCause(1));
+    //   const values = await Promise.all(promiseArr);
+    //   let userDetails = values[0][0];
+    //   let transactionHistory = values[1];
+    //   let cause = values[2];
 
-      let transactionObj = {
-        userDetails : {
-          balance: userDetails.balance,
-          contractId: userDetails.contractId,
-          userId: userDetails.id,
-          userName: userDetails.username
-        }
-      };
+    //   let transactionObj = {
+    //     userDetails : {
+    //       balance: userDetails.balance,
+    //       contractId: userDetails.contractId,
+    //       userId: userDetails.id,
+    //       userName: userDetails.username
+    //     }
+    //   };
 
-      const historyObj = transactionHistory.map((transaction) => {
-        return {
-          causeDetailName: transaction.causeDetailName,
-          transactionDate: transaction.transactionDate,
-          transactionValue: transaction.transactionValue,
-          causeOrg: cause[0].orgName,
-          causeName: cause[0].causeName,
-          causeDesc: cause[0].causeDesc,
-          nodeEnv: process.env.NODE_ENV
-        };
-      });
+    //   const historyObj = transactionHistory.map((transaction) => {
+    //     return {
+    //       causeDetailName: transaction.causeDetailName,
+    //       transactionDate: transaction.transactionDate,
+    //       transactionValue: transaction.transactionValue,
+    //       causeOrg: cause[0].orgName,
+    //       causeName: cause[0].causeName,
+    //       causeDesc: cause[0].causeDesc,
+    //       nodeEnv: process.env.NODE_ENV
+    //     };
+    //   });
 
-      transactionObj.transactHistory = historyObj;
-      reply.status(200).send(transactionObj);
+    //   transactionObj.transactHistory = historyObj;
+    //   reply.status(200).send(transactionObj);
 
-    } catch (ex) {
-      reply.boom.badImplementation('Unable to find any transactions for the user.');
-    }
+    // } catch (ex) {
+    //   reply.boom.badImplementation('Unable to find any transactions for the user.');
+    // }
+    reply.status(200).send({
+      test: 'hello'
+    });
   },
   getDonationScreenData: (request, reply) => {
     try {

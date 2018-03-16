@@ -19,11 +19,11 @@ const registerServerHandlers = (serverInstance) => {
 
   const setEnvVariables = (nodeEnv) => {
     if (nodeEnv === 'production') {
-      dotenv.config({ path: './env-config/.env.prod' });
+      dotenv.config({ path: './Docker/prod/.env.prod' });
     } else if (process.env.NODE_ENV === 'qa') {
-      dotenv.config({ path: './env-config/.env.qa' });
+      dotenv.config({ path: './Docker/qa/.env.qa' });
     } else {
-      dotenv.config({ path: './env-config/.env.dev' });
+      dotenv.config({ path: './Docker/dev/.env.dev' });
     }
   };
 

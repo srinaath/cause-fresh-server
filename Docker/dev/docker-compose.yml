@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  express-node:
+    build:
+      context: ../../
+      dockerfile: ./Docker/Dockerfile-node
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    networks:
+      - causefresh_net_qa
+
+  causefresh-db:
+    build:
+      context: ../../
+      dockerfile: ./Docker/Dockerfile-mysql
+    restart: always
+    networks:
+      causefresh_net_qa:
+            aliases:
+              - ${dbHost}
+    ports:
+      - "${DB_PORT_EXTERNAL}:${DB_PORT_INTERNAL}"
+
+networks:
+    causefresh_net_qa:
+      driver: bridge
+

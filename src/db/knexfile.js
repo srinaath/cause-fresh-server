@@ -2,10 +2,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host: '18.217.221.74',
-      user: 'tolkien',
+      host: 'causefresh-db',
+      user: 'root',
       database: 'CauseFresh',
-      password: 'causeUserFresh123*!'
+      password: 'terminator007'
     },
     debug: true
   },

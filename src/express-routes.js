@@ -6,6 +6,7 @@ const clientHandlerInstance = clientHandler();
 const adminHandlerInstance = adminHandler();
 
 const loadRoutes = (app) => {
+  app.get('/api/testClientEndpoint', clientHandlerInstance.testClientEndpoint);
   app.get('/api/getTransactionDetails', clientHandlerInstance.getTransactionDetails);
   app.get('/api/getDonationScreenData', clientHandlerInstance.getDonationScreenData);
   app.post('/api/addDonationToSubCause', clientHandlerInstance.addDonationToSubCause);
