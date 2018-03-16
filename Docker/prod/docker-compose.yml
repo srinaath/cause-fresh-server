@@ -19,10 +19,12 @@ services:
       context: ../../
       dockerfile: ./Docker/Dockerfile-mysql
     restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${dbPass}
     networks:
       causefresh_net_prod:
-            aliases:
-              - ${dbHost}
+        aliases:
+          - ${dbHost}
     ports:
       - "${DB_PORT_EXTERNAL}:${DB_PORT_INTERNAL}"
 
