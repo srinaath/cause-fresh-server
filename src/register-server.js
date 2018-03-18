@@ -1,81 +1,83 @@
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import errorHandler from 'errorhandler';
+import passport from 'passport';
+import expressValidator from 'express-validator';
+import compression from 'compression';
+import expressStatusMonitor from 'express-status-monitor';
+import fs from 'fs';
+import path from 'path';
+import rfs from 'rotating-file-stream';
+import express from 'express';
+import lusca from 'lusca';
+import boom from 'express-boom';
+// const passportConfiguration = require('./config/passport');
 
-const registerServerHandlers = () => {
-  let serverObj = null;
+
+const registerServerHandlers = (serverInstance) => {
 
   const setEnvVariables = (nodeEnv) => {
     if (nodeEnv === 'production') {
-      dotenv.config({ path: './env-config/.env.prod' });
+      dotenv.config({ path: './Docker/prod/.env.prod' });
     } else if (process.env.NODE_ENV === 'qa') {
-      dotenv.config({ path: './env-config/.env.qa' });
+      dotenv.config({ path: './Docker/qa/.env.qa' });
     } else {
-      dotenv.config({ path: './env-config/.env.dev' });
+      dotenv.config({ path: './Docker/dev/.env.dev' });
     }
   };
 
-  const setServerObj = (servObj) => {
-    serverObj = servObj;
+
+  const initExpressUtilities = () => {
+    serverInstance.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
+    serverInstance.set('port', process.env.SERVER_PORT || 8080);
+    serverInstance.use(expressStatusMonitor());
+    serverInstance.use(compression());
+    serverInstance.use(bodyParser.json());
+    serverInstance.use(bodyParser.urlencoded({ extended: true }));
+    serverInstance.use(expressValidator());
+    serverInstance.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+    serverInstance.use(lusca.xframe('SAMEORIGIN'));
+    serverInstance.use(boom());
+    serverInstance.use(lusca.xssProtection(true));
+    setLogger();
+    // Use passport for OAuth
+    setPassport();
+
+    // Load Routes
+    const loadRoutes = require('./express-routes');
+    loadRoutes(serverInstance);
   };
 
-  const validateUser = (decoded, request, callback) => {
-    console.log(request);
-    return callback(null, true);
-  };
+  const setLogger = () => {
+    if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'qa') {
+      const logDirectory = path.join(__dirname, 'logs');
 
-  const initServer = () => {
-    try {
-      serverObj.register(require('hapi-auth-cookie'), (err) => {
-        if (err) {
-          throw err;
-        }
+      // ensure log directory exists
+      fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
-        serverObj.auth.strategy('session', 'cookie', {
-          password: process.env.encryptionPassword,
-          validateFunc: (request, session, callback) => {
-            console.log('Request', request);
-            return callback(null, true);
-          },
-          isSecure: false
-        });
+      // create a rotating write stream
+      const accessLogStream = rfs('cause-fresh.log', {
+        interval: '1d', // rotate daily
+        path: logDirectory
       });
-
-
-      serverObj.register(require('bell'),  (err) => {
-        if (err) {
-          throw err;
-        }
-
-        serverObj.auth.strategy('twitter', 'bell', {
-          provider: process.env.defaultProvider,
-          password: process.env.encryptionPassword,
-          clientId: process.env.twitterClientId,
-          clientSecret: process.env.twitterClientSecret,
-          isSecure: false
-        });
-        serverObj.route(require('./routes'));
-      });
-
-      serverObj.register({
-        register: require('hapi-cors'),
-        options: {
-          methods: ['POST, GET, OPTIONS', 'PUT'],
-          origins: ['http://localhost:3000']
-        }
-      }, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
-    } catch (ex) {
-      serverObj.log('appError', ex);
+      // setup the logger
+      serverInstance.use(logger('combined', {stream: accessLogStream}));
+    } else {
+      serverInstance.use(logger('dev'));
+      serverInstance.use(errorHandler());
     }
+  };
+
+
+  const setPassport = () => {
+    serverInstance.use(passport.initialize());
+    // const passportConfig = passportConfiguration;
   };
 
   return {
     setEnvVariables : setEnvVariables,
-    initServer: initServer,
-    setServerObj: setServerObj,
-    getServerObj: () => { return serverObj; }
+    initExpressUtilities: initExpressUtilities
   };
 };
 
