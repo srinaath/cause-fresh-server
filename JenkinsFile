@@ -6,20 +6,10 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Build Server Code') {
-            steps {
-                sh 'CI=false yarn build'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'CI=true npm test'
-            }
-        }
+      stage('Build') {
+          steps {
+              sh 'npm install'
+          }
+      }
     }
 }
