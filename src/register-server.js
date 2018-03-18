@@ -36,7 +36,7 @@ const registerServerHandlers = (serverInstance) => {
     serverInstance.use(bodyParser.json());
     serverInstance.use(bodyParser.urlencoded({ extended: true }));
     serverInstance.use(expressValidator());
-    serverInstance.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+    console.log(path.join(__dirname, 'public'));
     serverInstance.use(lusca.xframe('SAMEORIGIN'));
     serverInstance.use(boom());
     serverInstance.use(lusca.xssProtection(true));
