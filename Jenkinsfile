@@ -1,14 +1,15 @@
 pipeline {
   agent {
     node {
-      label 'NodeEng'
+      label 'CauseFreshNewest'
     }
     
   }
   stages {
-    stage('') {
+    stage('Install') {
       steps {
-        sh 'sh "npm install"'
+        sh 'npm install'
+        sh 'npm start'
       }
     }
   }
