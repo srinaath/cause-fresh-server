@@ -11,7 +11,7 @@ serverUtils.setEnvVariables(process.env.NODE_ENV);
 
 serverUtils.initExpressUtilities();
 
-app.use('/', express.static('public'));
+app.use(express.static('public'));
 
 app.listen(app.get('port'), () => {
   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
