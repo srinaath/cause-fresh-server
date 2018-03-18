@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  express-node-prod:
+    build:
+      context: ../../
+      dockerfile: ./Docker/Dockerfile-node
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    networks:
+      - causefresh_net_prod
+    entrypoint:
+      - npm
+      - run
+      - build:prod
+
+  causefresh-db-prod:
+    build:
+      context: ../../
+      dockerfile: ./Docker/Dockerfile-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${dbPass}
+    networks:
+      causefresh_net_prod:
+        aliases:
+          - ${dbHost}
+    ports:
+      - "${DB_PORT_EXTERNAL}:${DB_PORT_INTERNAL}"
+
+networks:
+    causefresh_net_prod:
+      driver: bridge
+

@@ -1,0 +1,2812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>host</key>
+			<string>192.168.99.100</string>
+			<key>kcid</key>
+			<string>7783953441317287545</string>
+			<key>name</key>
+			<string>Cause fresh sravicha</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTSFwsYGVxOU1JhbmdlQ291bnQQAIAG0hscHR5aJGNsYXNz
+			bmFtZVgkY2xhc3Nlc1pOU0luZGV4U2V0oh8gWk5TSW5kZXhTZXRY
+			TlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVk
+			QXJjaGl2ZXLRJidUZGF0YYABAAgAEQAaACMALQAyADcAQABGAE0A
+			VQBgAGcAagBsAG4AcQBzAHUAdwB8AIEAoQCmALMAtQC3ALwAxwDQ
+			ANsA3gDpAPIA9wEEAQcBGQEcASEAAAAAAAACAQAAAAAAAAAoAAAA
+			AAAAAAAAAAAAAAABIw==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {694, 450}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>view</key>
+			<string>SP_VIEW_RELATIONS</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>269</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 07, 2018 at 04:11 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
+
+USE 'demo_db'
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"</string>
+		<string>-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 07, 2018 at 04:11 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+--
+-- Database: `demo_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documents`
+--
+
+CREATE TABLE `documents` (
+  `docid` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `template` int(11) NOT NULL,
+  `project` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `fileid` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `dam_url` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `groupid` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`groupid`, `title`, `description`, `status`, `created_at`) VALUES
+(1, 'a', 'sdfdsfdsfdsa', 1, '0000-00-00 00:00:00');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL,
+  `subject` text NOT NULL,
+  `content` longtext NOT NULL,
+  `attechment_id` varchar(255) NOT NULL,
+  `sender_id` int(55) NOT NULL,
+  `reciver_id` int(11) NOT NULL,
+  `first_reciever_id` int(11) DEFAULT NULL,
+  `first_sender_id` int(11) NOT NULL,
+  `thread_id` int(55) NOT NULL DEFAULT '0',
+  `sender_thread_status` int(11) NOT NULL,
+  `reciever_thread_status` int(11) NOT NULL,
+  `notification_type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1 for text message and 0 for Notification',
+  `bcc_emails` text,
+  `is_read` int(4) NOT NULL DEFAULT '0',
+  `updated_at` varchar(255) NOT NULL,
+  `is_deleted_by_sender` int(11) NOT NULL DEFAULT '0',
+  `is_delete_by_reciver` int(11) NOT NULL DEFAULT '0',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notes`
+--
+
+CREATE TABLE `notes` (
+  `noteid` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `project` int(11) NOT NULL,
+  `document` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `permissionsid` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission_role`
+--
+
+CREATE TABLE `permission_role` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `permission_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE `projects` (
+  `projectid` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `start_date` datetime NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `roleid` int(11) NOT NULL,
+  `role_type` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`roleid`, `role_type`, `status`, `created_at`) VALUES
+(1, 'marketing admin', 1, '2018-02-23 23:16:56'),
+(2, 'marketing agent', 1, '2018-02-23 23:16:56'),
+(3, 'lawyer', 1, '2018-02-23 23:16:56');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `templates`
+--
+
+CREATE TABLE `templates` (
+  `templateid` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `ids_src` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `templates`
+--
+
+INSERT INTO `templates` (`templateid`, `name`, `ids_src`, `status`, `created_at`) VALUES
+(1, 'tempalte 1', 'www.com', 1, '0000-00-00 00:00:00');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `firstname` varchar(128) NOT NULL,
+  `lastname` varchar(128) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_groups`
+--
+
+CREATE TABLE `user_groups` (
+  `id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `documents`
+--
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`docid`),
+  ADD KEY `project_id` (`project_id`),
+  ADD KEY `template` (`template`);
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`fileid`),
+  ADD KEY `project_id` (`project_id`);
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`groupid`);
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `sender_id` (`sender_id`),
+  ADD KEY `reciver_id` (`reciver_id`),
+  ADD KEY `first_reciever_id` (`first_reciever_id`),
+  ADD KEY `first_sender_id` (`first_sender_id`);
+--
+-- Indexes for table `notes`
+--
+ALTER TABLE `notes`
+  ADD PRIMARY KEY (`noteid`),
+  ADD KEY `project` (`project`),
+  ADD KEY `document` (`document`);
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`permissionsid`),
+  ADD UNIQUE KEY `permissions_name_unique` (`name`);
+--
+-- Indexes for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `permission_role_permission_id_foreign` (`permission_id`),
+  ADD KEY `permission_role_role_id_foreign` (`role_id`);
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`projectid`),
+  ADD KEY `user_id` (`user_id`);
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`roleid`);
+--
+-- Indexes for table `templates`
+--
+ALTER TABLE `templates`
+  ADD PRIMARY KEY (`templateid`);
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `role_id` (`role_id`);
+--
+-- Indexes for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `group_id` (`group_id`),
+  ADD KEY `user_id` (`user_id`);
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `docid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `fileid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `groupid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `notes`
+--
+ALTER TABLE `notes`
+  MODIFY `noteid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `permissionsid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `projectid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `roleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `templates`
+--
+ALTER TABLE `templates`
+  MODIFY `templateid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `documents`
+--
+ALTER TABLE `documents`
+  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`projectid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `documents_ibfk_2` FOREIGN KEY (`template`) REFERENCES `templates` (`templateid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `files`
+--
+ALTER TABLE `files`
+  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`projectid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`first_reciever_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`first_sender_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`reciver_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `message_ibfk_4` FOREIGN KEY (`sender_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `notes`
+--
+ALTER TABLE `notes`
+  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`document`) REFERENCES `documents` (`docid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`project`) REFERENCES `projects` (`projectid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD CONSTRAINT `permission_role_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`permissionsid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `projects`
+--
+ALTER TABLE `projects`
+  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`roleid`) ON DELETE CASCADE ON UPDATE NO ACTION;
+--
+-- Constraints for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD CONSTRAINT `user_groups_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`groupid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_groups_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+COMMIT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+demo_db_latest.sql
+Displaying demo_db_latest.sql.</string>
+		<string>Conversation opened. 1 read message.
+
+Skip to content
+Using Gmail with screen readers
+
+  More 
+11 of 8,747
+ 
+Fwd: Rensera DB 
+Inbox
+x 
+
+Daniel Patton
+Attachments8:35 PM (18 hours ago)
+to me 
+Hey Srinaath, here is the actual SQL. 
+
+
+
+
+
+Attachments area
+	
+Click here to Reply or Forward
+3.71 GB (24%) of 15 GB used
+Manage
+Terms - Privacy
+Last account activity: 1 minute ago
+Details
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 07, 2018 at 04:11 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"</string>
+		<string># ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.7.21-0ubuntu0.16.04.1)
+# Database: CauseFresh
+# Generation Time: 2018-02-28 17:08:19 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+# Dump of table cf-cause
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf-cause`;
+CREATE TABLE `cf-cause` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `causeName` varchar(50) NOT NULL DEFAULT '',
+  `causeDesc` varchar(512) DEFAULT NULL,
+  `organizationId` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orgGk` (`organizationId`),
+  CONSTRAINT `orgGk` FOREIGN KEY (`organizationId`) REFERENCES `cf-organization` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `cf-cause` WRITE;
+/*!40000 ALTER TABLE `cf-cause` DISABLE KEYS */;
+INSERT INTO `cf-cause` (`id`, `causeName`, `causeDesc`, `organizationId`)
+VALUES
+	(1,'Johnson County Relief Fund','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam commodo fringilla luctus. Aenean lacinia tristique ipsum, nec placerat odio dapibus vel. Mauris et lacus justo. Praesent imperdiet placerat nisi, vel maximus odio tempor ac. Fusce iaculis ultricies tortor vitae convallis. ',1);
+/*!40000 ALTER TABLE `cf-cause` ENABLE KEYS */;
+UNLOCK TABLES;
+# Dump of table cf-causedetails
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf-causedetails`;
+CREATE TABLE `cf-causedetails` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `causeId` int(11) unsigned NOT NULL,
+  `causeDetailName` varchar(80) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `causeFkId` (`causeId`),
+  CONSTRAINT `causeFkId` FOREIGN KEY (`causeId`) REFERENCES `cf-cause` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `cf-causedetails` WRITE;
+/*!40000 ALTER TABLE `cf-causedetails` DISABLE KEYS */;
+INSERT INTO `cf-causedetails` (`id`, `causeId`, `causeDetailName`)
+VALUES
+	(1,1,'General'),
+	(2,1,'Water Cans'),
+	(3,1,'Food Packets'),
+	(4,1,'Clothing'),
+	(5,1,'Housing');
+/*!40000 ALTER TABLE `cf-causedetails` ENABLE KEYS */;
+UNLOCK TABLES;
+# Dump of table cf-organization
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf-organization`;
+CREATE TABLE `cf-organization` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `orgName` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `cf-organization` WRITE;
+/*!40000 ALTER TABLE `cf-organization` DISABLE KEYS */;
+INSERT INTO `cf-organization` (`id`, `orgName`)
+VALUES
+	(1,'American Red Cross');
+/*!40000 ALTER TABLE `cf-organization` ENABLE KEYS */;
+UNLOCK TABLES;
+# Dump of table cf-transactdetails
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf-transactdetails`;
+CREATE TABLE `cf-transactdetails` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `transactionId` int(11) unsigned NOT NULL,
+  `comment` varchar(300) DEFAULT NULL,
+  `imageLocation` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `transactionIdFk` (`transactionId`),
+  CONSTRAINT `transactionIdFk` FOREIGN KEY (`transactionId`) REFERENCES `cf-transaction` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `cf-transactdetails` WRITE;
+/*!40000 ALTER TABLE `cf-transactdetails` DISABLE KEYS */;
+INSERT INTO `cf-transactdetails` (`id`, `transactionId`, `comment`, `imageLocation`)
+VALUES
+	(1,1,'Test transaction','C:\\asda\\test.png');
+/*!40000 ALTER TABLE `cf-transactdetails` ENABLE KEYS */;
+UNLOCK TABLES;
+# Dump of table cf-transaction
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf-transaction`;
+CREATE TABLE `cf-transaction` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(11) unsigned NOT NULL,
+  `transactionValue` double NOT NULL,
+  `subCauseId` int(11) unsigned NOT NULL,
+  `transactionDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `userIdFk` (`userId`),
+  KEY `causeDetailsFk` (`subCauseId`),
+  CONSTRAINT `causeDetailsFk` FOREIGN KEY (`subCauseId`) REFERENCES `cf-causedetails` (`id`),
+  CONSTRAINT `userIdFk` FOREIGN KEY (`userId`) REFERENCES `cf-user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `cf-transaction` WRITE;
+/*!40000 ALTER TABLE `cf-transaction` DISABLE KEYS */;
+INSERT INTO `cf-transaction` (`id`, `userId`, `transactionValue`, `subCauseId`, `transactionDate`)
+VALUES
+	(1,1,200,1,'2018-02-10 07:31:36'),
+	(3,1,300,2,'2018-02-10 18:36:13'),
+	(6,1,100,3,'2018-02-10 18:36:28'),
+	(12,1,200,1,'2018-02-10 22:44:35'),
+	(13,1,230,3,'2018-02-10 22:47:20'),
+	(14,1,300,1,'2018-02-10 22:51:00'),
+	(15,1,200,3,'2018-02-10 22:59:03'),
+	(16,1,400,1,'2018-02-14 16:47:15'),
+	(17,1,200,1,'2018-02-14 17:16:58'),
+	(18,1,23,1,'2018-02-14 21:03:03'),
+	(19,1,200,1,'2018-02-14 21:09:20'),
+	(20,1,33,1,'2018-02-14 21:29:33'),
+	(21,1,33,1,'2018-02-14 21:29:51'),
+	(22,1,55,1,'2018-02-14 21:31:00'),
+	(23,1,45,1,'2018-02-15 18:34:54'),
+	(24,1,20,1,'2018-02-15 18:36:07'),
+	(25,1,34,1,'2018-02-15 18:37:15'),
+	(26,1,45,1,'2018-02-15 18:39:21'),
+	(27,1,23,1,'2018-02-15 18:40:17'),
+	(28,1,200,4,'2018-02-15 20:42:59'),
+	(29,1,200,1,'2018-02-20 19:00:51');
+/*!40000 ALTER TABLE `cf-transaction` ENABLE KEYS */;
+UNLOCK TABLES;
+# Dump of table cf-user
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf-user`;
+CREATE TABLE `cf-user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(256) NOT NULL DEFAULT '',
+  `balance` double NOT NULL,
+  `contractId` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+LOCK TABLES `cf-user` WRITE;
+/*!40000 ALTER TABLE `cf-user` DISABLE KEYS */;
+INSERT INTO `cf-user` (`id`, `username`, `balance`, `contractId`)
+VALUES
+	(1,'sravichandran',7359,'asdsad234'),
+	(2,'dpatton',10000,'dsf324');
+/*!40000 ALTER TABLE `cf-user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */</string>
+		<string>ALTER TABLE MODIFY transactionDate datetime DEFAULT CURRENT_TIMESTAMP</string>
+		<string>ALTER TABLE MODIFY dt_created datetime DEFAULT CURRENT_TIMESTAMP
+ALTER TABLE MODIFY dt_modified datetime DEFAULT ON UPDATE CURRENT_TIMESTAMP</string>
+		<string>ALTER TABLE
+ MODIFY cf-transaction datetime DEFAULT CURRENT_TIMESTAMP</string>
+		<string>CALL filterOnFactTable_Iteration_New(1, 2, 23, '')</string>
+		<string>CREATE PROCEDURE createFilterTable()
+BEGIN
+DECLARE thisSQL TEXT;
+
+SET thisSQL = null;
+
+DROP TABLE IF EXISTS filterFactTable;
+SELECT
+    GROUP_CONCAT(DISTINCT CONCAT(
+      'MAX(IF(mRRPV.propertyID = ''',
+      propertyID,
+      ''', mRRPV.propertyValueID, NULL)) AS property_',
+      propertyID
+    ))
+    INTO thisSQL
+FROM mRRPV;
+
+
+SET thisSQL = CONCAT(
+'CREATE TABLE filterFactTable
+AS
+SELECT r.responseIterationID iterationID, r.responseInt responseInt, r.responseFormat responseFormat, mRRPV.measureID measureID,  mRRPV.measureRequirementID requirementID, r.responseRespondentID respondentID, ',thisSQL,' 
+FROM response r
+JOIN
+mRRPV ON r.responseRespondentID = mRRPV.respondentID AND r.responseMeasureID = mRRPV.measureID
+WHERE r.responseInt IS NOT NULL
+GROUP BY r.responseInt,r.responseRespondentID,r.responseIterationID,mRRPV.measureID,mRRPV.measureRequirementID, r.responseFormat'
+);
+
+PREPARE stmt FROM thisSQL;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+END</string>
+		<string>CREATE DEFINER=`root`@`localhost` PROCEDURE `createFilterTable`()
+BEGIN
+DECLARE thisSQL TEXT;
+
+SET thisSQL = null;
+
+DROP TABLE IF EXISTS filterFactTable;
+SELECT
+    GROUP_CONCAT(DISTINCT CONCAT(
+      'MAX(IF(mRRPV.propertyID = ''',
+      propertyID,
+      ''', mRRPV.propertyValueID, NULL)) AS property_',
+      propertyID
+    ))
+    INTO thisSQL
+FROM mRRPV;
+
+
+SET thisSQL = CONCAT(
+'CREATE TABLE filterFactTable
+AS
+SELECT r.responseIterationID iterationID, r.responseInt responseInt, r.responseFormat responseFormat, mRRPV.measureID measureID,  mRRPV.measureRequirementID requirementID, r.responseRespondentID respondentID, ',thisSQL,' 
+FROM response r
+JOIN
+mRRPV ON r.responseRespondentID = mRRPV.respondentID AND r.responseMeasureID = mRRPV.measureID
+WHERE r.responseInt IS NOT NULL
+GROUP BY r.responseInt,r.responseRespondentID,r.responseIterationID,mRRPV.measureID,mRRPV.measureRequirementID, r.responseFormat'
+);
+
+PREPARE stmt FROM thisSQL;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+END</string>
+		<string>CREATE DEFINER=`root`@`localhost` PROCEDURE `createFilterTable`()
+BEGIN
+DECLARE @SQL TEXT;
+
+SET @SQL = null;
+
+DROP TABLE IF EXISTS filterFactTable;
+SELECT
+    GROUP_CONCAT(DISTINCT CONCAT(
+      'MAX(IF(mRRPV.propertyID = ''',
+      propertyID,
+      ''', mRRPV.propertyValueID, NULL)) AS property_',
+      propertyID
+    ))
+    INTO @SQL
+FROM mRRPV;
+
+
+SET @SQL = CONCAT(
+'CREATE TABLE filterFactTable
+AS
+SELECT r.responseIterationID iterationID, r.responseInt responseInt, r.responseFormat responseFormat, mRRPV.measureID measureID,  mRRPV.measureRequirementID requirementID, r.responseRespondentID respondentID, ',@SQL,' 
+FROM response r
+JOIN
+mRRPV ON r.responseRespondentID = mRRPV.respondentID AND r.responseMeasureID = mRRPV.measureID
+WHERE r.responseInt IS NOT NULL
+GROUP BY r.responseInt,r.responseRespondentID,r.responseIterationID,mRRPV.measureID,mRRPV.measureRequirementID, r.responseFormat'
+);
+
+PREPARE stmt FROM @SQL;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+END</string>
+		<string>DROP PROCEDURE IF EXISTS SeedDb;
+CREATE PROCEDURE SeedDb()
+   BEGIN
+   	/*Script for dropping all tables in DB -- in correct order*/
+DROP TABLE IF EXISTS response;
+DROP TABLE IF EXISTS respondentProperty;
+DROP TABLE IF EXISTS projectPropertyConfig;
+DROP TABLE IF EXISTS propertyValue;
+DROP TABLE IF EXISTS property;
+DROP TABLE IF EXISTS respondent;
+DROP TABLE IF EXISTS measure;
+DROP TABLE IF EXISTS requirement;
+DROP TABLE IF EXISTS model;
+DROP TABLE IF EXISTS iteration;
+DROP TABLE IF EXISTS projectPhase;
+DROP TABLE IF EXISTS phase;
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS projectType;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS adminLevel;
+DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS orgGeography;
+DROP TABLE IF EXISTS orgSize;
+DROP TABLE IF EXISTS subSector;
+DROP TABLE IF EXISTS sector;
+DROP TABLE IF EXISTS industry;
+DROP TABLE IF EXISTS loadTable;
+DROP TABLE IF EXISTS job;
+
+
+/*Script for creating all permanent DB tables*/
+
+CREATE TABLE industry(
+	industryID 			INT 				NOT NULL AUTO_INCREMENT,
+	industryName 		VARCHAR(45)				NOT NULL,
+	CONSTRAINT PK_industry PRIMARY KEY (industryID)
+);
+
+/*reference table for sector an organization falls into*/
+CREATE TABLE sector(
+	sectorID 			INT					NOT NULL AUTO_INCREMENT,
+	sector 				VARCHAR(45)			NOT NULL,
+	sectorIndustryID	INT 				NOT NULL,
+	CONSTRAINT PK_sector PRIMARY KEY (sectorID),
+	CONSTRAINT FK_industry 
+		FOREIGN KEY (sectorIndustryID)
+		REFERENCES industry(IndustryID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for sub-sectors within a sector*/
+CREATE TABLE subSector(
+	subSectorID			INT 				NOT NULL AUTO_INCREMENT,
+	subSectorName		VARCHAR(45)			NOT NULL,
+	subSectorSectorID	INT 				NOT NULL,
+	CONSTRAINT PK_subSector
+		PRIMARY KEY (subSectorID),
+	CONSTRAINT FK_subSectorSector
+		FOREIGN KEY (subSectorSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for total number of employees in an organization*/
+CREATE TABLE orgSize(
+	orgSizeID 					INT 				NOT NULL AUTO_INCREMENT,
+	orgSizeName	VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgSize
+		PRIMARY KEY (orgSizeID)
+);
+
+/* reference table for possible geographic distributuion of client's company*/
+CREATE TABLE orgGeography(
+	orgGeographyID INT NOT NULL AUTO_INCREMENT,
+	orgGeographyName VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgGeography
+		PRIMARY KEY (orgGeographyID)
+);
+
+/* organization is the client for whom the assessment is being done*/
+CREATE TABLE organization(
+	organizationID 				INT 				NOT NULL AUTO_INCREMENT,
+	organizationName 			VARCHAR(45) 		NOT NULL,
+	organizationIndustryID 		INT  				NOT NULL,
+	organizationIsDemo 			BOOL 				NOT NULL,
+	organizationSectorID 		INT 				NOT NULL,
+	organizationSubSectorID		INT, /*can be null, not all orgs fall into a subsector*/
+	organizationOrgSizeID		INT 				NOT NULL,
+	organizationOrgGeographyID	INT 				NOT NULL,
+	CONSTRAINT PK_organization PRIMARY KEY (organizationID),
+	CONSTRAINT FK_organizationIndustry
+		FOREIGN KEY (organizationIndustryID) 
+		REFERENCES industry(industryID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSector
+		FOREIGN KEY (organizationSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSubSector
+		FOREIGN KEY (organizationSubSectorID)
+		REFERENCES subSector(subSectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgSize 
+		FOREIGN KEY (organizationOrgSizeID)
+		REFERENCES orgSize (orgSizeID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgGeography 
+		FOREIGN KEY (organizationOrgGeographyID)
+		REFERENCES orgGeography (orgGeographyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+		);
+/*adminLevel defines the different admin levels available for the users of the site*/
+CREATE TABLE adminLevel(
+	adminLevelID 		INT 				NOT NULL AUTO_INCREMENT,
+	adminLevel 			VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_adminLevel PRIMARY KEY (adminLevelID)
+);
+
+/*user indicates users of this website*/
+CREATE TABLE user(
+	userID	INT 					NOT NULL AUTO_INCREMENT,
+	userOrgID 		 INT 			NOT NULL,
+	userAdminLevelID INT 			NOT NULL,
+	userFirstName VARCHAR(45)		NOT NULL,
+	userLastName VARCHAR(45)		NOT NULL,
+	userEmailAddress VARCHAR(100)	NOT NULL,
+	CONSTRAINT PK_user 
+		PRIMARY KEY (userID),
+	CONSTRAINT FK_user_adminlevel 
+		FOREIGN KEY (userAdminLevelID) 
+		REFERENCES adminLevel(adminLevelID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_user_org 
+		FOREIGN KEY (userOrgID) 
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table holding different phases of a project*/
+CREATE TABLE phase(
+	phaseID 			INT 				NOT NULL AUTO_INCREMENT,
+	phaseName 			VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_phase PRIMARY KEY (phaseID)
+);
+
+/*project Type is a reference table for the type of project*/
+CREATE TABLE projectType(
+	projectTypeID 		INT 				NOT NULL AUTO_INCREMENT,
+	projectType 		VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_projectType PRIMARY KEY (projectTypeID)
+);
+
+/*refers to greater project in which change management risks are being assessed*/
+CREATE TABLE project(
+	projectID 			INT 				NOT NULL AUTO_INCREMENT,
+	projectName 		VARCHAR(45) 		NOT NULL,
+	projectOrgID		INT 				NOT NULL,
+	projectProjectType	INT 				NOT NULL,				
+	CONSTRAINT PK_projectID PRIMARY KEY (projectID),
+	CONSTRAINT FK_projectOrg 
+		FOREIGN KEY (projectOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_projectProjectType
+		FOREIGN KEY (projectprojectType)
+		REFERENCES projectType(projectTypeID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between phase and project to identify in which phase of a project the assessment is being conducted during*/
+CREATE TABLE projectPhase(
+	projectPhaseID			INT 			NOT NULL AUTO_INCREMENT,
+	projectPhaseProjectID 	INT 			NOT NULL,
+	projectPhasePhaseID		INT 			NOT NULL, 
+	CONSTRAINT PK_ProjectPhase
+		PRIMARY KEY (projectPhaseID),
+	CONSTRAINT FK_ProjectPhase_Project
+		FOREIGN KEY (projectPhaseProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_ProjectPhase_Phase
+		FOREIGN KEY (projectPhasePhaseID)
+		REFERENCES phase(phaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+	);
+
+/*Iteration is the name of the assessment*/
+CREATE TABLE iteration(
+	iterationID 				INT 				NOT NULL AUTO_INCREMENT,
+	iterationName 				VARCHAR(45) 		NOT NULL,
+	iterationDate 				DATE 				NOT NULL,
+	iterationProjectID 			INT 				NOT NULL,
+	iterationProjectPhaseID 	INT 				NOT NULL,
+	CONSTRAINT PK_iteration 
+		PRIMARY KEY (iterationID),
+	CONSTRAINT FK_iterationProjectID
+		FOREIGN KEY	(iterationProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_iteration_ProjectPhase
+		FOREIGN KEY (iterationProjectPhaseID)
+		REFERENCES projectPhase(projectPhaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+);
+
+/*model table holds info about the scorecard model that is being used in the survey*/
+CREATE TABLE model(
+	modelID				INT 			NOT NULL AUTO_INCREMENT,
+	modelName			VARCHAR(45)		NOT NULL,
+	modelIntroDate		DATE 			NOT NULL,
+	modelRetirementDate DATE,
+	modelIsCurrent		BOOL 			NOT NULL, /*indicates whether the model is the one currently in use*/
+	CONSTRAINT PK_model 
+		PRIMARY KEY (modelID)
+);
+
+/*requirement table holds requirements e.g. 'compelling vision' */
+CREATE TABLE requirement(
+	requirementID 		INT 			NOT NULL AUTO_INCREMENT,
+	requirementName 	VARCHAR(45) 	NOT NULL,
+	requirementModelID	INT				NOT NULL,
+	CONSTRAINT PK_requirement PRIMARY KEY (requirementID),
+	CONSTRAINT FK_requirementModel 
+		FOREIGN KEY (requirementModelID)
+		REFERENCES model(modelID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*measure table holds measures e.g. 'clear program objectives'*/
+CREATE TABLE measure(
+	measureID 				INT 			NOT NULL AUTO_INCREMENT,
+	measureRequirementID 			INT 			NOT NULL,
+	measureName 			VARCHAR(240) 	NOT NULL,
+	CONSTRAINT PK_measureID PRIMARY KEY (measureID),
+	CONSTRAINT FK_measureRequirement 
+		FOREIGN KEY (measureRequirementID)
+		REFERENCES requirement(requirementID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*respondent gives rating on each measure in the form of a response*/
+CREATE TABLE respondent(
+	respondentID 			INT 			NOT NULL AUTO_INCREMENT,
+	CONSTRAINT PK_respondent PRIMARY KEY (respondentID)
+);
+
+/*a property is a demographic characteristic of a respondent*/
+CREATE TABLE property(
+	propertyID 				INT 			NOT NULL AUTO_INCREMENT,
+	propertyName 			VARCHAR(45) 	NOT NULL,
+	propertyOrgID 			INT,
+	propertyIsLocked 		BOOL 			NOT NULL,
+	CONSTRAINT PK_property 	PRIMARY KEY (propertyID),
+	CONSTRAINT FK_propertyOrg 
+		FOREIGN KEY (propertyOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table to configure which project uses which properties*/
+CREATE TABLE projectPropertyConfig(
+	propertyID 				INT 			NOT NULL,
+	projectID 				INT 			NOT NULL,
+	CONSTRAINT PK_propertyConfig
+	PRIMARY KEY (propertyID, projectID)
+);
+
+/*propertyValue table holds possible answer values for each property*/
+CREATE TABLE propertyValue(
+	propertyValueID INT 			NOT NULL AUTO_INCREMENT,
+	propertyValuePropertyID INT 	NOT NULL,
+	propertyValue VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_propertyValue PRIMARY KEY (propertyValueID),
+	CONSTRAINT FK_propertyValueProperty
+		FOREIGN KEY (propertyValuePropertyID)
+		REFERENCES property(propertyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between respondent and property*/
+CREATE TABLE respondentProperty(
+	respondentPropertyID		INT 	NOT NULL,
+	respondentPropertyValueID	INT 	NOT NULL,
+	respondentPropertyRespondentID	INT NOT NULL,
+	CONSTRAINT PK_respondentProperty
+		PRIMARY KEY (respondentPropertyID, respondentPropertyValueID, respondentPropertyRespondentID)
+);
+
+/*fact table, holds the individual rating for each measure by each respondent in each iteration*/
+CREATE TABLE response(
+	responseID INT 					NOT NULL AUTO_INCREMENT,
+	responseIterationID INT 		NOT NULL,
+	responseMeasureID 	INT 		NOT NULL,
+	responseRespondentID INT  		NOT NULL,
+	responseIsFeatured	BOOL		NOT NULL DEFAULT FALSE,
+	responseFormat		VARCHAR(10) CHECK(responseFormat in('interview','survey')),
+	responseInt INT CHECK(responseINT &lt;= 5),
+	responseText VARCHAR(1000),
+	CONSTRAINT PK_response PRIMARY KEY (responseID),
+	CONSTRAINT FK_responseIteration
+		FOREIGN KEY (responseIterationID)
+		REFERENCES iteration(iterationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseMeasure
+		FOREIGN KEY (responseMeasureID)
+		REFERENCES measure(measureID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseRespondent
+		FOREIGN KEY (responseRespondentID)
+		REFERENCES respondent(respondentID)
+);
+
+
+/*jobs table for logging uploads*/
+CREATE TABLE job(
+	jobID				INT 			NOT NULL AUTO_INCREMENT,
+	jobCSVpath			VARCHAR(100) 	NOT NULL,
+	jobError			VARCHAR(200),
+	jobIterationID 		INT 			NOT NULL,
+	CONSTRAINT PK_job PRIMARY KEY (jobID)
+);
+
+INSERT INTO industry (industryName)
+VALUES
+	("Consumer &amp; Industrial Products"),
+	("Energy &amp; Resources"),
+	("Federal Government"),
+	("Financial Services"),
+	("Life Sciences &amp; Health Care"),
+	("Public Sector"),
+	("Technology, Media &amp; Telecommunications"),
+	("Consulting")
+;
+
+INSERT INTO sector(sectorIndustryID, sector)
+VALUES
+(1, "Automotive"),
+(1, "Aerospace &amp; Defense"),
+(1, "Industrial Products &amp; Services"),
+(1, "Chemicals &amp; Specialty Materials"),
+(1, "Retail, Wholesale &amp; Distribution"),
+(1, "Consumer Products"),
+(1, "Travel, Hospitality &amp; Services"),
+(2, "Oil &amp; Gas"),
+(2,	"Power &amp; Utilties"),
+(3,	"Civilian"),
+(3,	"Defense"),
+(3,	"Health"),
+(3,	"National Security"),
+(4,	"Banking &amp; Securities"),
+(4,	"Insurance"),
+(4,	"Investment Management"),
+(4,	"Real Estate"),
+(5,	"Health Care Providers"),
+(5,	"Health Plans"),
+(5,	"Life Sciences"),
+(6,	"State Government"),
+(6,	"Higher Education"),
+(7,	"Technology"),
+(7,	"Media &amp; Entertainment"),
+(7,	"Telecommunications")
+;
+
+/*INSERT INTO subSector(subSectorSectorID, subSectorName)
+VALUES
+;*/
+
+INSERT INTO phase (phaseName)
+VALUES
+	("Discovery"),
+	("Design"),
+	("Build"),
+	("Test"),
+	("Deployment"),
+	("Support")
+;
+
+INSERT INTO property (propertyName, propertyIsLocked)
+VALUES
+	("Tenure", TRUE),
+	("Level", TRUE),
+	("Business Unit", FALSE),
+	("Region", FALSE),
+	("Function", FALSE)
+;
+
+INSERT INTO propertyValue (propertyValuePropertyID, propertyValue)
+VALUES
+	(1, "0-1 year"),
+	(1, "1-5 years"),
+	(1, "5-10 years"),
+	(1, "10-15 years"),
+	(1, "15 or more years"),
+	(2, "Executive Vice President"),
+	(2, "Vice President"),
+	(2, "Senior Director"),
+	(2, "Director"),
+	(2, "Senior Manager"),
+	(2, "Manager/Supervisor"),
+	(2, "Employee")
+;
+
+INSERT INTO projectType (projectType)
+VALUES
+	("IT Implementation"),
+	("M&amp;A"),
+	("Regulatory"),
+	("Process Optimization"),
+	("Functional Transformation"),
+	("Other")
+;
+
+INSERT INTO orgSize (orgSizeName)
+VALUES
+	("0-5,000"),
+	("5,000 - 10k"),
+	("10k - 20k"),
+	("20k - 40k"),
+	("40k - 80k"),
+	("80k - 160k"),
+	("160k or more")
+;
+
+INSERT INTO orgGeography (orgGeographyName)
+VALUES
+	("US Regional"),
+	("US National"),
+	("Multi-National"),
+	("Global")
+;
+
+INSERT INTO adminLevel(adminLevel)
+VALUES
+("admin"),
+("client");
+
+
+INSERT INTO organization
+(organizationName, organizationIndustryID, organizationIsDemo, organizationSectorID, organizationOrgSizeID, organizationOrgGeographyID)
+VALUES
+("Deloitte US",8,TRUE,7,7,3);
+
+INSERT INTO model(modelName, modelIntroDate, modelIsCurrent)
+VALUES
+	("Version 1", '2017-02-17', TRUE);
+
+INSERT INTO requirement(requirementName, requirementModelID)
+VALUES
+	("Compelling Vision", 1),
+	("Broad Engagement", 1),
+	("Clear Impacts", 1),
+	("Reinforced Expectations", 1),
+	("Additional Feedback", 1)
+;
+
+INSERT INTO measure(measureName, measureRequirementID)
+VALUES
+	("Clear Program Objectives", 1),
+	("Compelling Business Case", 1),
+	("Attractive Future State Outcomes", 1),
+	("Clear Long Term Roadmap", 1),
+	("Transparent and Inclusive Program Team", 2),
+	("Regular Involvement of Key Stakeholders", 2),
+	("Sufficient Flow Of Program Information", 2),
+	("Two-way Feedback Channels in Place", 2),
+	("Changes to the Organization Understood", 3),
+	("Changes to Technology Understood", 3),
+	("Changes to Individual Roles Understood", 3),
+	("New Individual Skill Requirements Understood", 3),
+	("Visible Support By Executive Team", 4),
+	("Clear Path to Individual Program Compliance", 4),
+	("Expectations Reinforced by Local Leaders", 4),
+	("Performance Management Implications for Non-Compliance", 4),
+	("Additional Feedback", 5)
+;
+
+INSERT INTO user(userOrgID, userAdminLevelID, userFirstName, userLastName, userEmailAddress)
+VALUES
+	("1", 1, "root", "root", "root@deloitte.com");
+
+   END;
+call Seed()</string>
+		<string>CREATE PROCEDURE Seed()
+   BEGIN
+   	/*Script for dropping all tables in DB -- in correct order*/
+DROP TABLE IF EXISTS response;
+DROP TABLE IF EXISTS respondentProperty;
+DROP TABLE IF EXISTS projectPropertyConfig;
+DROP TABLE IF EXISTS propertyValue;
+DROP TABLE IF EXISTS property;
+DROP TABLE IF EXISTS respondent;
+DROP TABLE IF EXISTS measure;
+DROP TABLE IF EXISTS requirement;
+DROP TABLE IF EXISTS model;
+DROP TABLE IF EXISTS iteration;
+DROP TABLE IF EXISTS projectPhase;
+DROP TABLE IF EXISTS phase;
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS projectType;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS adminLevel;
+DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS orgGeography;
+DROP TABLE IF EXISTS orgSize;
+DROP TABLE IF EXISTS subSector;
+DROP TABLE IF EXISTS sector;
+DROP TABLE IF EXISTS industry;
+DROP TABLE IF EXISTS loadTable;
+DROP TABLE IF EXISTS job;
+
+
+/*Script for creating all permanent DB tables*/
+
+CREATE TABLE industry(
+	industryID 			INT 				NOT NULL AUTO_INCREMENT,
+	industryName 		VARCHAR(45)				NOT NULL,
+	CONSTRAINT PK_industry PRIMARY KEY (industryID)
+);
+
+/*reference table for sector an organization falls into*/
+CREATE TABLE sector(
+	sectorID 			INT					NOT NULL AUTO_INCREMENT,
+	sector 				VARCHAR(45)			NOT NULL,
+	sectorIndustryID	INT 				NOT NULL,
+	CONSTRAINT PK_sector PRIMARY KEY (sectorID),
+	CONSTRAINT FK_industry 
+		FOREIGN KEY (sectorIndustryID)
+		REFERENCES industry(IndustryID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for sub-sectors within a sector*/
+CREATE TABLE subSector(
+	subSectorID			INT 				NOT NULL AUTO_INCREMENT,
+	subSectorName		VARCHAR(45)			NOT NULL,
+	subSectorSectorID	INT 				NOT NULL,
+	CONSTRAINT PK_subSector
+		PRIMARY KEY (subSectorID),
+	CONSTRAINT FK_subSectorSector
+		FOREIGN KEY (subSectorSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for total number of employees in an organization*/
+CREATE TABLE orgSize(
+	orgSizeID 					INT 				NOT NULL AUTO_INCREMENT,
+	orgSizeName	VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgSize
+		PRIMARY KEY (orgSizeID)
+);
+
+/* reference table for possible geographic distributuion of client's company*/
+CREATE TABLE orgGeography(
+	orgGeographyID INT NOT NULL AUTO_INCREMENT,
+	orgGeographyName VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgGeography
+		PRIMARY KEY (orgGeographyID)
+);
+
+/* organization is the client for whom the assessment is being done*/
+CREATE TABLE organization(
+	organizationID 				INT 				NOT NULL AUTO_INCREMENT,
+	organizationName 			VARCHAR(45) 		NOT NULL,
+	organizationIndustryID 		INT  				NOT NULL,
+	organizationIsDemo 			BOOL 				NOT NULL,
+	organizationSectorID 		INT 				NOT NULL,
+	organizationSubSectorID		INT, /*can be null, not all orgs fall into a subsector*/
+	organizationOrgSizeID		INT 				NOT NULL,
+	organizationOrgGeographyID	INT 				NOT NULL,
+	CONSTRAINT PK_organization PRIMARY KEY (organizationID),
+	CONSTRAINT FK_organizationIndustry
+		FOREIGN KEY (organizationIndustryID) 
+		REFERENCES industry(industryID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSector
+		FOREIGN KEY (organizationSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSubSector
+		FOREIGN KEY (organizationSubSectorID)
+		REFERENCES subSector(subSectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgSize 
+		FOREIGN KEY (organizationOrgSizeID)
+		REFERENCES orgSize (orgSizeID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgGeography 
+		FOREIGN KEY (organizationOrgGeographyID)
+		REFERENCES orgGeography (orgGeographyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+		);
+/*adminLevel defines the different admin levels available for the users of the site*/
+CREATE TABLE adminLevel(
+	adminLevelID 		INT 				NOT NULL AUTO_INCREMENT,
+	adminLevel 			VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_adminLevel PRIMARY KEY (adminLevelID)
+);
+
+/*user indicates users of this website*/
+CREATE TABLE user(
+	userID	INT 					NOT NULL AUTO_INCREMENT,
+	userOrgID 		 INT 			NOT NULL,
+	userAdminLevelID INT 			NOT NULL,
+	userFirstName VARCHAR(45)		NOT NULL,
+	userLastName VARCHAR(45)		NOT NULL,
+	userEmailAddress VARCHAR(100)	NOT NULL,
+	CONSTRAINT PK_user 
+		PRIMARY KEY (userID),
+	CONSTRAINT FK_user_adminlevel 
+		FOREIGN KEY (userAdminLevelID) 
+		REFERENCES adminLevel(adminLevelID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_user_org 
+		FOREIGN KEY (userOrgID) 
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table holding different phases of a project*/
+CREATE TABLE phase(
+	phaseID 			INT 				NOT NULL AUTO_INCREMENT,
+	phaseName 			VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_phase PRIMARY KEY (phaseID)
+);
+
+/*project Type is a reference table for the type of project*/
+CREATE TABLE projectType(
+	projectTypeID 		INT 				NOT NULL AUTO_INCREMENT,
+	projectType 		VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_projectType PRIMARY KEY (projectTypeID)
+);
+
+/*refers to greater project in which change management risks are being assessed*/
+CREATE TABLE project(
+	projectID 			INT 				NOT NULL AUTO_INCREMENT,
+	projectName 		VARCHAR(45) 		NOT NULL,
+	projectOrgID		INT 				NOT NULL,
+	projectProjectType	INT 				NOT NULL,				
+	CONSTRAINT PK_projectID PRIMARY KEY (projectID),
+	CONSTRAINT FK_projectOrg 
+		FOREIGN KEY (projectOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_projectProjectType
+		FOREIGN KEY (projectprojectType)
+		REFERENCES projectType(projectTypeID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between phase and project to identify in which phase of a project the assessment is being conducted during*/
+CREATE TABLE projectPhase(
+	projectPhaseID			INT 			NOT NULL AUTO_INCREMENT,
+	projectPhaseProjectID 	INT 			NOT NULL,
+	projectPhasePhaseID		INT 			NOT NULL, 
+	CONSTRAINT PK_ProjectPhase
+		PRIMARY KEY (projectPhaseID),
+	CONSTRAINT FK_ProjectPhase_Project
+		FOREIGN KEY (projectPhaseProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_ProjectPhase_Phase
+		FOREIGN KEY (projectPhasePhaseID)
+		REFERENCES phase(phaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+	);
+
+/*Iteration is the name of the assessment*/
+CREATE TABLE iteration(
+	iterationID 				INT 				NOT NULL AUTO_INCREMENT,
+	iterationName 				VARCHAR(45) 		NOT NULL,
+	iterationDate 				DATE 				NOT NULL,
+	iterationProjectID 			INT 				NOT NULL,
+	iterationProjectPhaseID 	INT 				NOT NULL,
+	CONSTRAINT PK_iteration 
+		PRIMARY KEY (iterationID),
+	CONSTRAINT FK_iterationProjectID
+		FOREIGN KEY	(iterationProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_iteration_ProjectPhase
+		FOREIGN KEY (iterationProjectPhaseID)
+		REFERENCES projectPhase(projectPhaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+);
+
+/*model table holds info about the scorecard model that is being used in the survey*/
+CREATE TABLE model(
+	modelID				INT 			NOT NULL AUTO_INCREMENT,
+	modelName			VARCHAR(45)		NOT NULL,
+	modelIntroDate		DATE 			NOT NULL,
+	modelRetirementDate DATE,
+	modelIsCurrent		BOOL 			NOT NULL, /*indicates whether the model is the one currently in use*/
+	CONSTRAINT PK_model 
+		PRIMARY KEY (modelID)
+);
+
+/*requirement table holds requirements e.g. 'compelling vision' */
+CREATE TABLE requirement(
+	requirementID 		INT 			NOT NULL AUTO_INCREMENT,
+	requirementName 	VARCHAR(45) 	NOT NULL,
+	requirementModelID	INT				NOT NULL,
+	CONSTRAINT PK_requirement PRIMARY KEY (requirementID),
+	CONSTRAINT FK_requirementModel 
+		FOREIGN KEY (requirementModelID)
+		REFERENCES model(modelID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*measure table holds measures e.g. 'clear program objectives'*/
+CREATE TABLE measure(
+	measureID 				INT 			NOT NULL AUTO_INCREMENT,
+	measureRequirementID 			INT 			NOT NULL,
+	measureName 			VARCHAR(240) 	NOT NULL,
+	CONSTRAINT PK_measureID PRIMARY KEY (measureID),
+	CONSTRAINT FK_measureRequirement 
+		FOREIGN KEY (measureRequirementID)
+		REFERENCES requirement(requirementID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*respondent gives rating on each measure in the form of a response*/
+CREATE TABLE respondent(
+	respondentID 			INT 			NOT NULL AUTO_INCREMENT,
+	CONSTRAINT PK_respondent PRIMARY KEY (respondentID)
+);
+
+/*a property is a demographic characteristic of a respondent*/
+CREATE TABLE property(
+	propertyID 				INT 			NOT NULL AUTO_INCREMENT,
+	propertyName 			VARCHAR(45) 	NOT NULL,
+	propertyOrgID 			INT,
+	propertyIsLocked 		BOOL 			NOT NULL,
+	CONSTRAINT PK_property 	PRIMARY KEY (propertyID),
+	CONSTRAINT FK_propertyOrg 
+		FOREIGN KEY (propertyOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table to configure which project uses which properties*/
+CREATE TABLE projectPropertyConfig(
+	propertyID 				INT 			NOT NULL,
+	projectID 				INT 			NOT NULL,
+	CONSTRAINT PK_propertyConfig
+	PRIMARY KEY (propertyID, projectID)
+);
+
+/*propertyValue table holds possible answer values for each property*/
+CREATE TABLE propertyValue(
+	propertyValueID INT 			NOT NULL AUTO_INCREMENT,
+	propertyValuePropertyID INT 	NOT NULL,
+	propertyValue VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_propertyValue PRIMARY KEY (propertyValueID),
+	CONSTRAINT FK_propertyValueProperty
+		FOREIGN KEY (propertyValuePropertyID)
+		REFERENCES property(propertyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between respondent and property*/
+CREATE TABLE respondentProperty(
+	respondentPropertyID		INT 	NOT NULL,
+	respondentPropertyValueID	INT 	NOT NULL,
+	respondentPropertyRespondentID	INT NOT NULL,
+	CONSTRAINT PK_respondentProperty
+		PRIMARY KEY (respondentPropertyID, respondentPropertyValueID, respondentPropertyRespondentID)
+);
+
+/*fact table, holds the individual rating for each measure by each respondent in each iteration*/
+CREATE TABLE response(
+	responseID INT 					NOT NULL AUTO_INCREMENT,
+	responseIterationID INT 		NOT NULL,
+	responseMeasureID 	INT 		NOT NULL,
+	responseRespondentID INT  		NOT NULL,
+	responseIsFeatured	BOOL		NOT NULL DEFAULT FALSE,
+	responseFormat		VARCHAR(10) CHECK(responseFormat in('interview','survey')),
+	responseInt INT CHECK(responseINT &lt;= 5),
+	responseText VARCHAR(1000),
+	CONSTRAINT PK_response PRIMARY KEY (responseID),
+	CONSTRAINT FK_responseIteration
+		FOREIGN KEY (responseIterationID)
+		REFERENCES iteration(iterationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseMeasure
+		FOREIGN KEY (responseMeasureID)
+		REFERENCES measure(measureID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseRespondent
+		FOREIGN KEY (responseRespondentID)
+		REFERENCES respondent(respondentID)
+);
+
+
+/*jobs table for logging uploads*/
+CREATE TABLE job(
+	jobID				INT 			NOT NULL AUTO_INCREMENT,
+	jobCSVpath			VARCHAR(100) 	NOT NULL,
+	jobError			VARCHAR(200),
+	jobIterationID 		INT 			NOT NULL,
+	CONSTRAINT PK_job PRIMARY KEY (jobID)
+);
+
+INSERT INTO industry (industryName)
+VALUES
+	("Consumer &amp; Industrial Products"),
+	("Energy &amp; Resources"),
+	("Federal Government"),
+	("Financial Services"),
+	("Life Sciences &amp; Health Care"),
+	("Public Sector"),
+	("Technology, Media &amp; Telecommunications"),
+	("Consulting")
+;
+
+INSERT INTO sector(sectorIndustryID, sector)
+VALUES
+(1, "Automotive"),
+(1, "Aerospace &amp; Defense"),
+(1, "Industrial Products &amp; Services"),
+(1, "Chemicals &amp; Specialty Materials"),
+(1, "Retail, Wholesale &amp; Distribution"),
+(1, "Consumer Products"),
+(1, "Travel, Hospitality &amp; Services"),
+(2, "Oil &amp; Gas"),
+(2,	"Power &amp; Utilties"),
+(3,	"Civilian"),
+(3,	"Defense"),
+(3,	"Health"),
+(3,	"National Security"),
+(4,	"Banking &amp; Securities"),
+(4,	"Insurance"),
+(4,	"Investment Management"),
+(4,	"Real Estate"),
+(5,	"Health Care Providers"),
+(5,	"Health Plans"),
+(5,	"Life Sciences"),
+(6,	"State Government"),
+(6,	"Higher Education"),
+(7,	"Technology"),
+(7,	"Media &amp; Entertainment"),
+(7,	"Telecommunications")
+;
+
+/*INSERT INTO subSector(subSectorSectorID, subSectorName)
+VALUES
+;*/
+
+INSERT INTO phase (phaseName)
+VALUES
+	("Discovery"),
+	("Design"),
+	("Build"),
+	("Test"),
+	("Deployment"),
+	("Support")
+;
+
+INSERT INTO property (propertyName, propertyIsLocked)
+VALUES
+	("Tenure", TRUE),
+	("Level", TRUE),
+	("Business Unit", FALSE),
+	("Region", FALSE),
+	("Function", FALSE)
+;
+
+INSERT INTO propertyValue (propertyValuePropertyID, propertyValue)
+VALUES
+	(1, "0-1 year"),
+	(1, "1-5 years"),
+	(1, "5-10 years"),
+	(1, "10-15 years"),
+	(1, "15 or more years"),
+	(2, "Executive Vice President"),
+	(2, "Vice President"),
+	(2, "Senior Director"),
+	(2, "Director"),
+	(2, "Senior Manager"),
+	(2, "Manager/Supervisor"),
+	(2, "Employee")
+;
+
+INSERT INTO projectType (projectType)
+VALUES
+	("IT Implementation"),
+	("M&amp;A"),
+	("Regulatory"),
+	("Process Optimization"),
+	("Functional Transformation"),
+	("Other")
+;
+
+INSERT INTO orgSize (orgSizeName)
+VALUES
+	("0-5,000"),
+	("5,000 - 10k"),
+	("10k - 20k"),
+	("20k - 40k"),
+	("40k - 80k"),
+	("80k - 160k"),
+	("160k or more")
+;
+
+INSERT INTO orgGeography (orgGeographyName)
+VALUES
+	("US Regional"),
+	("US National"),
+	("Multi-National"),
+	("Global")
+;
+
+INSERT INTO adminLevel(adminLevel)
+VALUES
+("admin"),
+("client");
+
+
+INSERT INTO organization
+(organizationName, organizationIndustryID, organizationIsDemo, organizationSectorID, organizationOrgSizeID, organizationOrgGeographyID)
+VALUES
+("Deloitte US",8,TRUE,7,7,3);
+
+INSERT INTO model(modelName, modelIntroDate, modelIsCurrent)
+VALUES
+	("Version 1", '2017-02-17', TRUE);
+
+INSERT INTO requirement(requirementName, requirementModelID)
+VALUES
+	("Compelling Vision", 1),
+	("Broad Engagement", 1),
+	("Clear Impacts", 1),
+	("Reinforced Expectations", 1),
+	("Additional Feedback", 1)
+;
+
+INSERT INTO measure(measureName, measureRequirementID)
+VALUES
+	("Clear Program Objectives", 1),
+	("Compelling Business Case", 1),
+	("Attractive Future State Outcomes", 1),
+	("Clear Long Term Roadmap", 1),
+	("Transparent and Inclusive Program Team", 2),
+	("Regular Involvement of Key Stakeholders", 2),
+	("Sufficient Flow Of Program Information", 2),
+	("Two-way Feedback Channels in Place", 2),
+	("Changes to the Organization Understood", 3),
+	("Changes to Technology Understood", 3),
+	("Changes to Individual Roles Understood", 3),
+	("New Individual Skill Requirements Understood", 3),
+	("Visible Support By Executive Team", 4),
+	("Clear Path to Individual Program Compliance", 4),
+	("Expectations Reinforced by Local Leaders", 4),
+	("Performance Management Implications for Non-Compliance", 4),
+	("Additional Feedback", 5)
+;
+
+INSERT INTO user(userOrgID, userAdminLevelID, userFirstName, userLastName, userEmailAddress)
+VALUES
+	("1", 1, "root", "root", "root@deloitte.com");
+
+   END;
+call Seed()</string>
+		<string>CREATE PROCEDURE Seed()
+   BEGIN
+   	/*Script for dropping all tables in DB -- in correct order*/
+DROP TABLE IF EXISTS response;
+DROP TABLE IF EXISTS respondentProperty;
+DROP TABLE IF EXISTS projectPropertyConfig;
+DROP TABLE IF EXISTS propertyValue;
+DROP TABLE IF EXISTS property;
+DROP TABLE IF EXISTS respondent;
+DROP TABLE IF EXISTS measure;
+DROP TABLE IF EXISTS requirement;
+DROP TABLE IF EXISTS model;
+DROP TABLE IF EXISTS iteration;
+DROP TABLE IF EXISTS projectPhase;
+DROP TABLE IF EXISTS phase;
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS projectType;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS adminLevel;
+DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS orgGeography;
+DROP TABLE IF EXISTS orgSize;
+DROP TABLE IF EXISTS subSector;
+DROP TABLE IF EXISTS sector;
+DROP TABLE IF EXISTS industry;
+DROP TABLE IF EXISTS loadTable;
+DROP TABLE IF EXISTS job;
+
+
+/*Script for creating all permanent DB tables*/
+
+CREATE TABLE industry(
+	industryID 			INT 				NOT NULL AUTO_INCREMENT,
+	industryName 		VARCHAR(45)				NOT NULL,
+	CONSTRAINT PK_industry PRIMARY KEY (industryID)
+);
+
+/*reference table for sector an organization falls into*/
+CREATE TABLE sector(
+	sectorID 			INT					NOT NULL AUTO_INCREMENT,
+	sector 				VARCHAR(45)			NOT NULL,
+	sectorIndustryID	INT 				NOT NULL,
+	CONSTRAINT PK_sector PRIMARY KEY (sectorID),
+	CONSTRAINT FK_industry 
+		FOREIGN KEY (sectorIndustryID)
+		REFERENCES industry(IndustryID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for sub-sectors within a sector*/
+CREATE TABLE subSector(
+	subSectorID			INT 				NOT NULL AUTO_INCREMENT,
+	subSectorName		VARCHAR(45)			NOT NULL,
+	subSectorSectorID	INT 				NOT NULL,
+	CONSTRAINT PK_subSector
+		PRIMARY KEY (subSectorID),
+	CONSTRAINT FK_subSectorSector
+		FOREIGN KEY (subSectorSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for total number of employees in an organization*/
+CREATE TABLE orgSize(
+	orgSizeID 					INT 				NOT NULL AUTO_INCREMENT,
+	orgSizeName	VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgSize
+		PRIMARY KEY (orgSizeID)
+);
+
+/* reference table for possible geographic distributuion of client's company*/
+CREATE TABLE orgGeography(
+	orgGeographyID INT NOT NULL AUTO_INCREMENT,
+	orgGeographyName VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgGeography
+		PRIMARY KEY (orgGeographyID)
+);
+
+/* organization is the client for whom the assessment is being done*/
+CREATE TABLE organization(
+	organizationID 				INT 				NOT NULL AUTO_INCREMENT,
+	organizationName 			VARCHAR(45) 		NOT NULL,
+	organizationIndustryID 		INT  				NOT NULL,
+	organizationIsDemo 			BOOL 				NOT NULL,
+	organizationSectorID 		INT 				NOT NULL,
+	organizationSubSectorID		INT, /*can be null, not all orgs fall into a subsector*/
+	organizationOrgSizeID		INT 				NOT NULL,
+	organizationOrgGeographyID	INT 				NOT NULL,
+	CONSTRAINT PK_organization PRIMARY KEY (organizationID),
+	CONSTRAINT FK_organizationIndustry
+		FOREIGN KEY (organizationIndustryID) 
+		REFERENCES industry(industryID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSector
+		FOREIGN KEY (organizationSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSubSector
+		FOREIGN KEY (organizationSubSectorID)
+		REFERENCES subSector(subSectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgSize 
+		FOREIGN KEY (organizationOrgSizeID)
+		REFERENCES orgSize (orgSizeID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgGeography 
+		FOREIGN KEY (organizationOrgGeographyID)
+		REFERENCES orgGeography (orgGeographyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+		);
+/*adminLevel defines the different admin levels available for the users of the site*/
+CREATE TABLE adminLevel(
+	adminLevelID 		INT 				NOT NULL AUTO_INCREMENT,
+	adminLevel 			VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_adminLevel PRIMARY KEY (adminLevelID)
+);
+
+/*user indicates users of this website*/
+CREATE TABLE user(
+	userID	INT 					NOT NULL AUTO_INCREMENT,
+	userOrgID 		 INT 			NOT NULL,
+	userAdminLevelID INT 			NOT NULL,
+	userFirstName VARCHAR(45)		NOT NULL,
+	userLastName VARCHAR(45)		NOT NULL,
+	userEmailAddress VARCHAR(100)	NOT NULL,
+	CONSTRAINT PK_user 
+		PRIMARY KEY (userID),
+	CONSTRAINT FK_user_adminlevel 
+		FOREIGN KEY (userAdminLevelID) 
+		REFERENCES adminLevel(adminLevelID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_user_org 
+		FOREIGN KEY (userOrgID) 
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table holding different phases of a project*/
+CREATE TABLE phase(
+	phaseID 			INT 				NOT NULL AUTO_INCREMENT,
+	phaseName 			VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_phase PRIMARY KEY (phaseID)
+);
+
+/*project Type is a reference table for the type of project*/
+CREATE TABLE projectType(
+	projectTypeID 		INT 				NOT NULL AUTO_INCREMENT,
+	projectType 		VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_projectType PRIMARY KEY (projectTypeID)
+);
+
+/*refers to greater project in which change management risks are being assessed*/
+CREATE TABLE project(
+	projectID 			INT 				NOT NULL AUTO_INCREMENT,
+	projectName 		VARCHAR(45) 		NOT NULL,
+	projectOrgID		INT 				NOT NULL,
+	projectProjectType	INT 				NOT NULL,				
+	CONSTRAINT PK_projectID PRIMARY KEY (projectID),
+	CONSTRAINT FK_projectOrg 
+		FOREIGN KEY (projectOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_projectProjectType
+		FOREIGN KEY (projectprojectType)
+		REFERENCES projectType(projectTypeID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between phase and project to identify in which phase of a project the assessment is being conducted during*/
+CREATE TABLE projectPhase(
+	projectPhaseID			INT 			NOT NULL AUTO_INCREMENT,
+	projectPhaseProjectID 	INT 			NOT NULL,
+	projectPhasePhaseID		INT 			NOT NULL, 
+	CONSTRAINT PK_ProjectPhase
+		PRIMARY KEY (projectPhaseID),
+	CONSTRAINT FK_ProjectPhase_Project
+		FOREIGN KEY (projectPhaseProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_ProjectPhase_Phase
+		FOREIGN KEY (projectPhasePhaseID)
+		REFERENCES phase(phaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+	);
+
+/*Iteration is the name of the assessment*/
+CREATE TABLE iteration(
+	iterationID 				INT 				NOT NULL AUTO_INCREMENT,
+	iterationName 				VARCHAR(45) 		NOT NULL,
+	iterationDate 				DATE 				NOT NULL,
+	iterationProjectID 			INT 				NOT NULL,
+	iterationProjectPhaseID 	INT 				NOT NULL,
+	CONSTRAINT PK_iteration 
+		PRIMARY KEY (iterationID),
+	CONSTRAINT FK_iterationProjectID
+		FOREIGN KEY	(iterationProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_iteration_ProjectPhase
+		FOREIGN KEY (iterationProjectPhaseID)
+		REFERENCES projectPhase(projectPhaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+);
+
+/*model table holds info about the scorecard model that is being used in the survey*/
+CREATE TABLE model(
+	modelID				INT 			NOT NULL AUTO_INCREMENT,
+	modelName			VARCHAR(45)		NOT NULL,
+	modelIntroDate		DATE 			NOT NULL,
+	modelRetirementDate DATE,
+	modelIsCurrent		BOOL 			NOT NULL, /*indicates whether the model is the one currently in use*/
+	CONSTRAINT PK_model 
+		PRIMARY KEY (modelID)
+);
+
+/*requirement table holds requirements e.g. 'compelling vision' */
+CREATE TABLE requirement(
+	requirementID 		INT 			NOT NULL AUTO_INCREMENT,
+	requirementName 	VARCHAR(45) 	NOT NULL,
+	requirementModelID	INT				NOT NULL,
+	CONSTRAINT PK_requirement PRIMARY KEY (requirementID),
+	CONSTRAINT FK_requirementModel 
+		FOREIGN KEY (requirementModelID)
+		REFERENCES model(modelID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*measure table holds measures e.g. 'clear program objectives'*/
+CREATE TABLE measure(
+	measureID 				INT 			NOT NULL AUTO_INCREMENT,
+	measureRequirementID 			INT 			NOT NULL,
+	measureName 			VARCHAR(240) 	NOT NULL,
+	CONSTRAINT PK_measureID PRIMARY KEY (measureID),
+	CONSTRAINT FK_measureRequirement 
+		FOREIGN KEY (measureRequirementID)
+		REFERENCES requirement(requirementID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*respondent gives rating on each measure in the form of a response*/
+CREATE TABLE respondent(
+	respondentID 			INT 			NOT NULL AUTO_INCREMENT,
+	CONSTRAINT PK_respondent PRIMARY KEY (respondentID)
+);
+
+/*a property is a demographic characteristic of a respondent*/
+CREATE TABLE property(
+	propertyID 				INT 			NOT NULL AUTO_INCREMENT,
+	propertyName 			VARCHAR(45) 	NOT NULL,
+	propertyOrgID 			INT,
+	propertyIsLocked 		BOOL 			NOT NULL,
+	CONSTRAINT PK_property 	PRIMARY KEY (propertyID),
+	CONSTRAINT FK_propertyOrg 
+		FOREIGN KEY (propertyOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table to configure which project uses which properties*/
+CREATE TABLE projectPropertyConfig(
+	propertyID 				INT 			NOT NULL,
+	projectID 				INT 			NOT NULL,
+	CONSTRAINT PK_propertyConfig
+	PRIMARY KEY (propertyID, projectID)
+);
+
+/*propertyValue table holds possible answer values for each property*/
+CREATE TABLE propertyValue(
+	propertyValueID INT 			NOT NULL AUTO_INCREMENT,
+	propertyValuePropertyID INT 	NOT NULL,
+	propertyValue VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_propertyValue PRIMARY KEY (propertyValueID),
+	CONSTRAINT FK_propertyValueProperty
+		FOREIGN KEY (propertyValuePropertyID)
+		REFERENCES property(propertyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between respondent and property*/
+CREATE TABLE respondentProperty(
+	respondentPropertyID		INT 	NOT NULL,
+	respondentPropertyValueID	INT 	NOT NULL,
+	respondentPropertyRespondentID	INT NOT NULL,
+	CONSTRAINT PK_respondentProperty
+		PRIMARY KEY (respondentPropertyID, respondentPropertyValueID, respondentPropertyRespondentID)
+);
+
+/*fact table, holds the individual rating for each measure by each respondent in each iteration*/
+CREATE TABLE response(
+	responseID INT 					NOT NULL AUTO_INCREMENT,
+	responseIterationID INT 		NOT NULL,
+	responseMeasureID 	INT 		NOT NULL,
+	responseRespondentID INT  		NOT NULL,
+	responseIsFeatured	BOOL		NOT NULL DEFAULT FALSE,
+	responseFormat		VARCHAR(10) CHECK(responseFormat in('interview','survey')),
+	responseInt INT CHECK(responseINT &lt;= 5),
+	responseText VARCHAR(1000),
+	CONSTRAINT PK_response PRIMARY KEY (responseID),
+	CONSTRAINT FK_responseIteration
+		FOREIGN KEY (responseIterationID)
+		REFERENCES iteration(iterationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseMeasure
+		FOREIGN KEY (responseMeasureID)
+		REFERENCES measure(measureID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseRespondent
+		FOREIGN KEY (responseRespondentID)
+		REFERENCES respondent(respondentID)
+);
+
+
+/*jobs table for logging uploads*/
+CREATE TABLE job(
+	jobID				INT 			NOT NULL AUTO_INCREMENT,
+	jobCSVpath			VARCHAR(100) 	NOT NULL,
+	jobError			VARCHAR(200),
+	jobIterationID 		INT 			NOT NULL,
+	CONSTRAINT PK_job PRIMARY KEY (jobID)
+);
+
+INSERT INTO industry (industryName)
+VALUES
+	("Consumer &amp; Industrial Products"),
+	("Energy &amp; Resources"),
+	("Federal Government"),
+	("Financial Services"),
+	("Life Sciences &amp; Health Care"),
+	("Public Sector"),
+	("Technology, Media &amp; Telecommunications"),
+	("Consulting")
+;
+
+INSERT INTO sector(sectorIndustryID, sector)
+VALUES
+(1, "Automotive"),
+(1, "Aerospace &amp; Defense"),
+(1, "Industrial Products &amp; Services"),
+(1, "Chemicals &amp; Specialty Materials"),
+(1, "Retail, Wholesale &amp; Distribution"),
+(1, "Consumer Products"),
+(1, "Travel, Hospitality &amp; Services"),
+(2, "Oil &amp; Gas"),
+(2,	"Power &amp; Utilties"),
+(3,	"Civilian"),
+(3,	"Defense"),
+(3,	"Health"),
+(3,	"National Security"),
+(4,	"Banking &amp; Securities"),
+(4,	"Insurance"),
+(4,	"Investment Management"),
+(4,	"Real Estate"),
+(5,	"Health Care Providers"),
+(5,	"Health Plans"),
+(5,	"Life Sciences"),
+(6,	"State Government"),
+(6,	"Higher Education"),
+(7,	"Technology"),
+(7,	"Media &amp; Entertainment"),
+(7,	"Telecommunications")
+;
+
+/*INSERT INTO subSector(subSectorSectorID, subSectorName)
+VALUES
+;*/
+
+INSERT INTO phase (phaseName)
+VALUES
+	("Discovery"),
+	("Design"),
+	("Build"),
+	("Test"),
+	("Deployment"),
+	("Support")
+;
+
+INSERT INTO property (propertyName, propertyIsLocked)
+VALUES
+	("Tenure", TRUE),
+	("Level", TRUE),
+	("Business Unit", FALSE),
+	("Region", FALSE),
+	("Function", FALSE)
+;
+
+INSERT INTO propertyValue (propertyValuePropertyID, propertyValue)
+VALUES
+	(1, "0-1 year"),
+	(1, "1-5 years"),
+	(1, "5-10 years"),
+	(1, "10-15 years"),
+	(1, "15 or more years"),
+	(2, "Executive Vice President"),
+	(2, "Vice President"),
+	(2, "Senior Director"),
+	(2, "Director"),
+	(2, "Senior Manager"),
+	(2, "Manager/Supervisor"),
+	(2, "Employee")
+;
+
+INSERT INTO projectType (projectType)
+VALUES
+	("IT Implementation"),
+	("M&amp;A"),
+	("Regulatory"),
+	("Process Optimization"),
+	("Functional Transformation"),
+	("Other")
+;
+
+INSERT INTO orgSize (orgSizeName)
+VALUES
+	("0-5,000"),
+	("5,000 - 10k"),
+	("10k - 20k"),
+	("20k - 40k"),
+	("40k - 80k"),
+	("80k - 160k"),
+	("160k or more")
+;
+
+INSERT INTO orgGeography (orgGeographyName)
+VALUES
+	("US Regional"),
+	("US National"),
+	("Multi-National"),
+	("Global")
+;
+
+INSERT INTO adminLevel(adminLevel)
+VALUES
+("admin"),
+("client");
+
+
+INSERT INTO organization
+(organizationName, organizationIndustryID, organizationIsDemo, organizationSectorID, organizationOrgSizeID, organizationOrgGeographyID)
+VALUES
+("Deloitte US",8,TRUE,7,7,3);
+
+INSERT INTO model(modelName, modelIntroDate, modelIsCurrent)
+VALUES
+	("Version 1", '2017-02-17', TRUE);
+
+INSERT INTO requirement(requirementName, requirementModelID)
+VALUES
+	("Compelling Vision", 1),
+	("Broad Engagement", 1),
+	("Clear Impacts", 1),
+	("Reinforced Expectations", 1),
+	("Additional Feedback", 1)
+;
+
+INSERT INTO measure(measureName, measureRequirementID)
+VALUES
+	("Clear Program Objectives", 1),
+	("Compelling Business Case", 1),
+	("Attractive Future State Outcomes", 1),
+	("Clear Long Term Roadmap", 1),
+	("Transparent and Inclusive Program Team", 2),
+	("Regular Involvement of Key Stakeholders", 2),
+	("Sufficient Flow Of Program Information", 2),
+	("Two-way Feedback Channels in Place", 2),
+	("Changes to the Organization Understood", 3),
+	("Changes to Technology Understood", 3),
+	("Changes to Individual Roles Understood", 3),
+	("New Individual Skill Requirements Understood", 3),
+	("Visible Support By Executive Team", 4),
+	("Clear Path to Individual Program Compliance", 4),
+	("Expectations Reinforced by Local Leaders", 4),
+	("Performance Management Implications for Non-Compliance", 4),
+	("Additional Feedback", 5)
+;
+
+INSERT INTO user(userOrgID, userAdminLevelID, userFirstName, userLastName, userEmailAddress)
+VALUES
+	("1", 1, "root", "root", "root@deloitte.com");
+;
+   END</string>
+		<string>CREATE PROCEDURE Seed()
+   BEGIN
+   	/*Script for dropping all tables in DB -- in correct order*/
+DROP TABLE IF EXISTS response;
+DROP TABLE IF EXISTS respondentProperty;
+DROP TABLE IF EXISTS projectPropertyConfig;
+DROP TABLE IF EXISTS propertyValue;
+DROP TABLE IF EXISTS property;
+DROP TABLE IF EXISTS respondent;
+DROP TABLE IF EXISTS measure;
+DROP TABLE IF EXISTS requirement;
+DROP TABLE IF EXISTS model;
+DROP TABLE IF EXISTS iteration;
+DROP TABLE IF EXISTS projectPhase;
+DROP TABLE IF EXISTS phase;
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS projectType;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS adminLevel;
+DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS orgGeography;
+DROP TABLE IF EXISTS orgSize;
+DROP TABLE IF EXISTS subSector;
+DROP TABLE IF EXISTS sector;
+DROP TABLE IF EXISTS industry;
+DROP TABLE IF EXISTS loadTable;
+DROP TABLE IF EXISTS job;
+
+
+/*Script for creating all permanent DB tables*/
+
+CREATE TABLE industry(
+	industryID 			INT 				NOT NULL AUTO_INCREMENT,
+	industryName 		VARCHAR(45)				NOT NULL,
+	CONSTRAINT PK_industry PRIMARY KEY (industryID)
+);
+
+/*reference table for sector an organization falls into*/
+CREATE TABLE sector(
+	sectorID 			INT					NOT NULL AUTO_INCREMENT,
+	sector 				VARCHAR(45)			NOT NULL,
+	sectorIndustryID	INT 				NOT NULL,
+	CONSTRAINT PK_sector PRIMARY KEY (sectorID),
+	CONSTRAINT FK_industry 
+		FOREIGN KEY (sectorIndustryID)
+		REFERENCES industry(IndustryID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for sub-sectors within a sector*/
+CREATE TABLE subSector(
+	subSectorID			INT 				NOT NULL AUTO_INCREMENT,
+	subSectorName		VARCHAR(45)			NOT NULL,
+	subSectorSectorID	INT 				NOT NULL,
+	CONSTRAINT PK_subSector
+		PRIMARY KEY (subSectorID),
+	CONSTRAINT FK_subSectorSector
+		FOREIGN KEY (subSectorSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table for total number of employees in an organization*/
+CREATE TABLE orgSize(
+	orgSizeID 					INT 				NOT NULL AUTO_INCREMENT,
+	orgSizeName	VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgSize
+		PRIMARY KEY (orgSizeID)
+);
+
+/* reference table for possible geographic distributuion of client's company*/
+CREATE TABLE orgGeography(
+	orgGeographyID INT NOT NULL AUTO_INCREMENT,
+	orgGeographyName VARCHAR(45) NOT NULL,
+	CONSTRAINT PK_orgGeography
+		PRIMARY KEY (orgGeographyID)
+);
+
+/* organization is the client for whom the assessment is being done*/
+CREATE TABLE organization(
+	organizationID 				INT 				NOT NULL AUTO_INCREMENT,
+	organizationName 			VARCHAR(45) 		NOT NULL,
+	organizationIndustryID 		INT  				NOT NULL,
+	organizationIsDemo 			BOOL 				NOT NULL,
+	organizationSectorID 		INT 				NOT NULL,
+	organizationSubSectorID		INT, /*can be null, not all orgs fall into a subsector*/
+	organizationOrgSizeID		INT 				NOT NULL,
+	organizationOrgGeographyID	INT 				NOT NULL,
+	CONSTRAINT PK_organization PRIMARY KEY (organizationID),
+	CONSTRAINT FK_organizationIndustry
+		FOREIGN KEY (organizationIndustryID) 
+		REFERENCES industry(industryID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSector
+		FOREIGN KEY (organizationSectorID)
+		REFERENCES sector(sectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationSubSector
+		FOREIGN KEY (organizationSubSectorID)
+		REFERENCES subSector(subSectorID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgSize 
+		FOREIGN KEY (organizationOrgSizeID)
+		REFERENCES orgSize (orgSizeID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_organizationOrgGeography 
+		FOREIGN KEY (organizationOrgGeographyID)
+		REFERENCES orgGeography (orgGeographyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+		);
+/*adminLevel defines the different admin levels available for the users of the site*/
+CREATE TABLE adminLevel(
+	adminLevelID 		INT 				NOT NULL AUTO_INCREMENT,
+	adminLevel 			VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_adminLevel PRIMARY KEY (adminLevelID)
+);
+
+/*user indicates users of this website*/
+CREATE TABLE user(
+	userID	INT 					NOT NULL AUTO_INCREMENT,
+	userOrgID 		 INT 			NOT NULL,
+	userAdminLevelID INT 			NOT NULL,
+	userFirstName VARCHAR(45)		NOT NULL,
+	userLastName VARCHAR(45)		NOT NULL,
+	userEmailAddress VARCHAR(100)	NOT NULL,
+	CONSTRAINT PK_user 
+		PRIMARY KEY (userID),
+	CONSTRAINT FK_user_adminlevel 
+		FOREIGN KEY (userAdminLevelID) 
+		REFERENCES adminLevel(adminLevelID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_user_org 
+		FOREIGN KEY (userOrgID) 
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*reference table holding different phases of a project*/
+CREATE TABLE phase(
+	phaseID 			INT 				NOT NULL AUTO_INCREMENT,
+	phaseName 			VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_phase PRIMARY KEY (phaseID)
+);
+
+/*project Type is a reference table for the type of project*/
+CREATE TABLE projectType(
+	projectTypeID 		INT 				NOT NULL AUTO_INCREMENT,
+	projectType 		VARCHAR(45)			NOT NULL,
+	CONSTRAINT PK_projectType PRIMARY KEY (projectTypeID)
+);
+
+/*refers to greater project in which change management risks are being assessed*/
+CREATE TABLE project(
+	projectID 			INT 				NOT NULL AUTO_INCREMENT,
+	projectName 		VARCHAR(45) 		NOT NULL,
+	projectOrgID		INT 				NOT NULL,
+	projectProjectType	INT 				NOT NULL,				
+	CONSTRAINT PK_projectID PRIMARY KEY (projectID),
+	CONSTRAINT FK_projectOrg 
+		FOREIGN KEY (projectOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_projectProjectType
+		FOREIGN KEY (projectprojectType)
+		REFERENCES projectType(projectTypeID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between phase and project to identify in which phase of a project the assessment is being conducted during*/
+CREATE TABLE projectPhase(
+	projectPhaseID			INT 			NOT NULL AUTO_INCREMENT,
+	projectPhaseProjectID 	INT 			NOT NULL,
+	projectPhasePhaseID		INT 			NOT NULL, 
+	CONSTRAINT PK_ProjectPhase
+		PRIMARY KEY (projectPhaseID),
+	CONSTRAINT FK_ProjectPhase_Project
+		FOREIGN KEY (projectPhaseProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_ProjectPhase_Phase
+		FOREIGN KEY (projectPhasePhaseID)
+		REFERENCES phase(phaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+	);
+
+/*Iteration is the name of the assessment*/
+CREATE TABLE iteration(
+	iterationID 				INT 				NOT NULL AUTO_INCREMENT,
+	iterationName 				VARCHAR(45) 		NOT NULL,
+	iterationDate 				DATE 				NOT NULL,
+	iterationProjectID 			INT 				NOT NULL,
+	iterationProjectPhaseID 	INT 				NOT NULL,
+	CONSTRAINT PK_iteration 
+		PRIMARY KEY (iterationID),
+	CONSTRAINT FK_iterationProjectID
+		FOREIGN KEY	(iterationProjectID)
+		REFERENCES project(projectID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_iteration_ProjectPhase
+		FOREIGN KEY (iterationProjectPhaseID)
+		REFERENCES projectPhase(projectPhaseID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+
+);
+
+/*model table holds info about the scorecard model that is being used in the survey*/
+CREATE TABLE model(
+	modelID				INT 			NOT NULL AUTO_INCREMENT,
+	modelName			VARCHAR(45)		NOT NULL,
+	modelIntroDate		DATE 			NOT NULL,
+	modelRetirementDate DATE,
+	modelIsCurrent		BOOL 			NOT NULL, /*indicates whether the model is the one currently in use*/
+	CONSTRAINT PK_model 
+		PRIMARY KEY (modelID)
+);
+
+/*requirement table holds requirements e.g. 'compelling vision' */
+CREATE TABLE requirement(
+	requirementID 		INT 			NOT NULL AUTO_INCREMENT,
+	requirementName 	VARCHAR(45) 	NOT NULL,
+	requirementModelID	INT				NOT NULL,
+	CONSTRAINT PK_requirement PRIMARY KEY (requirementID),
+	CONSTRAINT FK_requirementModel 
+		FOREIGN KEY (requirementModelID)
+		REFERENCES model(modelID)
+	ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*measure table holds measures e.g. 'clear program objectives'*/
+CREATE TABLE measure(
+	measureID 				INT 			NOT NULL AUTO_INCREMENT,
+	measureRequirementID 			INT 			NOT NULL,
+	measureName 			VARCHAR(240) 	NOT NULL,
+	CONSTRAINT PK_measureID PRIMARY KEY (measureID),
+	CONSTRAINT FK_measureRequirement 
+		FOREIGN KEY (measureRequirementID)
+		REFERENCES requirement(requirementID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*respondent gives rating on each measure in the form of a response*/
+CREATE TABLE respondent(
+	respondentID 			INT 			NOT NULL AUTO_INCREMENT,
+	CONSTRAINT PK_respondent PRIMARY KEY (respondentID)
+);
+
+/*a property is a demographic characteristic of a respondent*/
+CREATE TABLE property(
+	propertyID 				INT 			NOT NULL AUTO_INCREMENT,
+	propertyName 			VARCHAR(45) 	NOT NULL,
+	propertyOrgID 			INT,
+	propertyIsLocked 		BOOL 			NOT NULL,
+	CONSTRAINT PK_property 	PRIMARY KEY (propertyID),
+	CONSTRAINT FK_propertyOrg 
+		FOREIGN KEY (propertyOrgID)
+		REFERENCES organization(organizationID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table to configure which project uses which properties*/
+CREATE TABLE projectPropertyConfig(
+	propertyID 				INT 			NOT NULL,
+	projectID 				INT 			NOT NULL,
+	CONSTRAINT PK_propertyConfig
+	PRIMARY KEY (propertyID, projectID)
+);
+
+/*propertyValue table holds possible answer values for each property*/
+CREATE TABLE propertyValue(
+	propertyValueID INT 			NOT NULL AUTO_INCREMENT,
+	propertyValuePropertyID INT 	NOT NULL,
+	propertyValue VARCHAR(45) 		NOT NULL,
+	CONSTRAINT PK_propertyValue PRIMARY KEY (propertyValueID),
+	CONSTRAINT FK_propertyValueProperty
+		FOREIGN KEY (propertyValuePropertyID)
+		REFERENCES property(propertyID)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*bridge table between respondent and property*/
+CREATE TABLE respondentProperty(
+	respondentPropertyID		INT 	NOT NULL,
+	respondentPropertyValueID	INT 	NOT NULL,
+	respondentPropertyRespondentID	INT NOT NULL,
+	CONSTRAINT PK_respondentProperty
+		PRIMARY KEY (respondentPropertyID, respondentPropertyValueID, respondentPropertyRespondentID)
+);
+
+/*fact table, holds the individual rating for each measure by each respondent in each iteration*/
+CREATE TABLE response(
+	responseID INT 					NOT NULL AUTO_INCREMENT,
+	responseIterationID INT 		NOT NULL,
+	responseMeasureID 	INT 		NOT NULL,
+	responseRespondentID INT  		NOT NULL,
+	responseIsFeatured	BOOL		NOT NULL DEFAULT FALSE,
+	responseFormat		VARCHAR(10) CHECK(responseFormat in('interview','survey')),
+	responseInt INT CHECK(responseINT &lt;= 5),
+	responseText VARCHAR(1000),
+	CONSTRAINT PK_response PRIMARY KEY (responseID),
+	CONSTRAINT FK_responseIteration
+		FOREIGN KEY (responseIterationID)
+		REFERENCES iteration(iterationID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseMeasure
+		FOREIGN KEY (responseMeasureID)
+		REFERENCES measure(measureID)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_responseRespondent
+		FOREIGN KEY (responseRespondentID)
+		REFERENCES respondent(respondentID)
+);
+
+
+/*jobs table for logging uploads*/
+CREATE TABLE job(
+	jobID				INT 			NOT NULL AUTO_INCREMENT,
+	jobCSVpath			VARCHAR(100) 	NOT NULL,
+	jobError			VARCHAR(200),
+	jobIterationID 		INT 			NOT NULL,
+	CONSTRAINT PK_job PRIMARY KEY (jobID)
+);
+
+INSERT INTO industry (industryName)
+VALUES
+	("Consumer &amp; Industrial Products"),
+	("Energy &amp; Resources"),
+	("Federal Government"),
+	("Financial Services"),
+	("Life Sciences &amp; Health Care"),
+	("Public Sector"),
+	("Technology, Media &amp; Telecommunications"),
+	("Consulting")
+;
+
+INSERT INTO sector(sectorIndustryID, sector)
+VALUES
+(1, "Automotive"),
+(1, "Aerospace &amp; Defense"),
+(1, "Industrial Products &amp; Services"),
+(1, "Chemicals &amp; Specialty Materials"),
+(1, "Retail, Wholesale &amp; Distribution"),
+(1, "Consumer Products"),
+(1, "Travel, Hospitality &amp; Services"),
+(2, "Oil &amp; Gas"),
+(2,	"Power &amp; Utilties"),
+(3,	"Civilian"),
+(3,	"Defense"),
+(3,	"Health"),
+(3,	"National Security"),
+(4,	"Banking &amp; Securities"),
+(4,	"Insurance"),
+(4,	"Investment Management"),
+(4,	"Real Estate"),
+(5,	"Health Care Providers"),
+(5,	"Health Plans"),
+(5,	"Life Sciences"),
+(6,	"State Government"),
+(6,	"Higher Education"),
+(7,	"Technology"),
+(7,	"Media &amp; Entertainment"),
+(7,	"Telecommunications")
+;
+
+/*INSERT INTO subSector(subSectorSectorID, subSectorName)
+VALUES
+;*/
+
+INSERT INTO phase (phaseName)
+VALUES
+	("Discovery"),
+	("Design"),
+	("Build"),
+	("Test"),
+	("Deployment"),
+	("Support")
+;
+
+INSERT INTO property (propertyName, propertyIsLocked)
+VALUES
+	("Tenure", TRUE),
+	("Level", TRUE),
+	("Business Unit", FALSE),
+	("Region", FALSE),
+	("Function", FALSE)
+;
+
+INSERT INTO propertyValue (propertyValuePropertyID, propertyValue)
+VALUES
+	(1, "0-1 year"),
+	(1, "1-5 years"),
+	(1, "5-10 years"),
+	(1, "10-15 years"),
+	(1, "15 or more years"),
+	(2, "Executive Vice President"),
+	(2, "Vice President"),
+	(2, "Senior Director"),
+	(2, "Director"),
+	(2, "Senior Manager"),
+	(2, "Manager/Supervisor"),
+	(2, "Employee")
+;
+
+INSERT INTO projectType (projectType)
+VALUES
+	("IT Implementation"),
+	("M&amp;A"),
+	("Regulatory"),
+	("Process Optimization"),
+	("Functional Transformation"),
+	("Other")
+;
+
+INSERT INTO orgSize (orgSizeName)
+VALUES
+	("0-5,000"),
+	("5,000 - 10k"),
+	("10k - 20k"),
+	("20k - 40k"),
+	("40k - 80k"),
+	("80k - 160k"),
+	("160k or more")
+;
+
+INSERT INTO orgGeography (orgGeographyName)
+VALUES
+	("US Regional"),
+	("US National"),
+	("Multi-National"),
+	("Global")
+;
+
+INSERT INTO adminLevel(adminLevel)
+VALUES
+("admin"),
+("client");
+
+
+INSERT INTO organization
+(organizationName, organizationIndustryID, organizationIsDemo, organizationSectorID, organizationOrgSizeID, organizationOrgGeographyID)
+VALUES
+("Deloitte US",8,TRUE,7,7,3);
+
+INSERT INTO model(modelName, modelIntroDate, modelIsCurrent)
+VALUES
+	("Version 1", '2017-02-17', TRUE);
+
+INSERT INTO requirement(requirementName, requirementModelID)
+VALUES
+	("Compelling Vision", 1),
+	("Broad Engagement", 1),
+	("Clear Impacts", 1),
+	("Reinforced Expectations", 1),
+	("Additional Feedback", 1)
+;
+
+INSERT INTO measure(measureName, measureRequirementID)
+VALUES
+	("Clear Program Objectives", 1),
+	("Compelling Business Case", 1),
+	("Attractive Future State Outcomes", 1),
+	("Clear Long Term Roadmap", 1),
+	("Transparent and Inclusive Program Team", 2),
+	("Regular Involvement of Key Stakeholders", 2),
+	("Sufficient Flow Of Program Information", 2),
+	("Two-way Feedback Channels in Place", 2),
+	("Changes to the Organization Understood", 3),
+	("Changes to Technology Understood", 3),
+	("Changes to Individual Roles Understood", 3),
+	("New Individual Skill Requirements Understood", 3),
+	("Visible Support By Executive Team", 4),
+	("Clear Path to Individual Program Compliance", 4),
+	("Expectations Reinforced by Local Leaders", 4),
+	("Performance Management Implications for Non-Compliance", 4),
+	("Additional Feedback", 5)
+;
+
+INSERT INTO user(userOrgID, userAdminLevelID, userFirstName, userLastName, userEmailAddress)
+VALUES
+	("1", 1, "root", "root", "root@deloitte.com");
+;
+
+
+
+
+   END</string>
+		<string>call Seed()</string>
+		<string>CREATE PROCEDURE Seed()
+   BEGIN
+   	/*Script for dropping all tables in DB -- in correct order*/
+DROP TABLE IF EXISTS response;
+DROP TABLE IF EXISTS respondentProperty;
+DROP TABLE IF EXISTS projectPropertyConfig;
+DROP TABLE IF EXISTS propertyValue;
+DROP TABLE IF EXISTS property;
+DROP TABLE IF EXISTS respondent;
+DROP TABLE IF EXISTS measure;
+DROP TABLE IF EXISTS requirement;
+DROP TABLE IF EXISTS model;
+DROP TABLE IF EXISTS iteration;
+DROP TABLE IF EXISTS projectPhase;
+DROP TABLE IF EXISTS phase;
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS projectType;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS adminLevel;
+DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS orgGeography;
+DROP TABLE IF EXISTS orgSize;
+DROP TABLE IF EXISTS subSector;
+DROP TABLE IF EXISTS sector;
+DROP TABLE IF EXISTS industry;
+DROP TABLE IF EXISTS loadTable;
+DROP TABLE IF EXISTS job;
+   END</string>
+		<string>CREATE FUNCTION `countPropInProj_copy1`(loadProjectID INT) RETURNS int(11)
+BEGIN
+    DECLARE loadPropCount INT;
+SELECT count(*) INTO loadPropCount FROM projectPropertyConfig WHERE projectID = loadProjectID;
+SET loadPropCount = loadPropCount-2;
+RETURN (loadPropCount);
+END</string>
+		<string>CREATE DEFINER=`root`@`localhost` FUNCTION `countPropInProj_copy`(loadProjectID INT) RETURNS int(11)
+BEGIN
+    DECLARE loadPropCount INT;
+SELECT count(*) INTO loadPropCount FROM projectPropertyConfig WHERE projectID = loadProjectID;
+SET loadPropCount = loadPropCount-2;
+RETURN (loadPropCount);
+END</string>
+		<string>DROP PROCEDURE IF EXISTS  $$
+CREATE PROCEDURE createLoadTable()
+BEGIN
+  ALTER TABLE 'loadTable' ADD 'prop1' INT</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.7.21</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
